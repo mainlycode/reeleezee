@@ -1,0 +1,66 @@
+MainlyCode\Reeleezee\ValueObject\ImportResultType\DossierFileAType:
+    properties:
+        totalProcessed:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalProcessed
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getTotalProcessed
+                setter: setTotalProcessed
+            type: integer
+        totalCreated:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalCreated
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getTotalCreated
+                setter: setTotalCreated
+            type: integer
+        totalUpdated:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalUpdated
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getTotalUpdated
+                setter: setTotalUpdated
+            type: integer
+        totalDeleted:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalDeleted
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getTotalDeleted
+                setter: setTotalDeleted
+            type: integer
+        totalIgnored:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalIgnored
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getTotalIgnored
+                setter: setTotalIgnored
+            type: integer
+        messageList:
+            expose: true
+            access_type: public_method
+            serialized_name: MessageList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getMessageList
+                setter: setMessageList
+            type: array<MainlyCode\Reeleezee\ValueObject\MessageListType\MessageAType>
+            xml_list:
+                inline: false
+                entry_name: Message
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'

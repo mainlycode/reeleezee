@@ -1,0 +1,22 @@
+MainlyCode\Reeleezee\ValueObject\ReeleezeeLoginType:
+    properties:
+        loginName:
+            expose: true
+            access_type: public_method
+            serialized_name: LoginName
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getLoginName
+                setter: setLoginName
+            type: string
+        password:
+            expose: true
+            access_type: public_method
+            serialized_name: Password
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getPassword
+                setter: setPassword
+            type: string

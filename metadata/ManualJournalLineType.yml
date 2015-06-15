@@ -1,0 +1,132 @@
+MainlyCode\Reeleezee\ValueObject\ManualJournalLineType:
+    properties:
+        reference:
+            expose: true
+            access_type: public_method
+            serialized_name: Reference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getReference
+                setter: setReference
+            type: string
+        description:
+            expose: true
+            access_type: public_method
+            serialized_name: Description
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDescription
+                setter: setDescription
+            type: string
+        amount:
+            expose: true
+            access_type: public_method
+            serialized_name: Amount
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getAmount
+                setter: setAmount
+            type: float
+        accountReference:
+            expose: true
+            access_type: public_method
+            serialized_name: AccountReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getAccountReference
+                setter: setAccountReference
+            type: MainlyCode\Reeleezee\ValueObject\ManualJournalLineType\AccountReferenceAType
+        productReference:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getProductReference
+                setter: setProductReference
+            type: MainlyCode\Reeleezee\ValueObject\ManualJournalLineType\ProductReferenceAType
+        employeeReference:
+            expose: true
+            access_type: public_method
+            serialized_name: EmployeeReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getEmployeeReference
+                setter: setEmployeeReference
+            type: MainlyCode\Reeleezee\ValueObject\ManualJournalLineType\EmployeeReferenceAType
+        departmentReference:
+            expose: true
+            access_type: public_method
+            serialized_name: DepartmentReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDepartmentReference
+                setter: setDepartmentReference
+            type: MainlyCode\Reeleezee\ValueObject\ManualJournalLineType\DepartmentReferenceAType
+        projectReference:
+            expose: true
+            access_type: public_method
+            serialized_name: ProjectReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getProjectReference
+                setter: setProjectReference
+            type: MainlyCode\Reeleezee\ValueObject\ManualJournalLineType\ProjectReferenceAType
+        accountNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: AccountNumber
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getAccountNumber
+                setter: setAccountNumber
+            type: string
+        productCode:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductCode
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getProductCode
+                setter: setProductCode
+            type: string
+        employeeCode:
+            expose: true
+            access_type: public_method
+            serialized_name: EmployeeCode
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getEmployeeCode
+                setter: setEmployeeCode
+            type: string
+        departmentCode:
+            expose: true
+            access_type: public_method
+            serialized_name: DepartmentCode
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDepartmentCode
+                setter: setDepartmentCode
+            type: string
+        project:
+            expose: true
+            access_type: public_method
+            serialized_name: Project
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getProject
+                setter: setProject
+            type: string

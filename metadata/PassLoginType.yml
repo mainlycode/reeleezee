@@ -1,0 +1,32 @@
+MainlyCode\Reeleezee\ValueObject\PassLoginType:
+    properties:
+        userID:
+            expose: true
+            access_type: public_method
+            serialized_name: UserID
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getUserID
+                setter: setUserID
+            type: string
+        signup:
+            expose: true
+            access_type: public_method
+            serialized_name: Signup
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getSignup
+                setter: setSignup
+            type: boolean
+        sendOTP:
+            expose: true
+            access_type: public_method
+            serialized_name: SendOTP
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getSendOTP
+                setter: setSendOTP
+            type: boolean

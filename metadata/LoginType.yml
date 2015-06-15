@@ -1,0 +1,42 @@
+MainlyCode\Reeleezee\ValueObject\LoginType:
+    properties:
+        reeleezee:
+            expose: true
+            access_type: public_method
+            serialized_name: Reeleezee
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getReeleezee
+                setter: setReeleezee
+            type: MainlyCode\Reeleezee\ValueObject\ReeleezeeLoginType
+        pass:
+            expose: true
+            access_type: public_method
+            serialized_name: Pass
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getPass
+                setter: setPass
+            type: MainlyCode\Reeleezee\ValueObject\PassLoginType
+        unit4Webber:
+            expose: true
+            access_type: public_method
+            serialized_name: Unit4Webber
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getUnit4Webber
+                setter: setUnit4Webber
+            type: MainlyCode\Reeleezee\ValueObject\Unit4WebberLoginType
+        docproof:
+            expose: true
+            access_type: public_method
+            serialized_name: Docproof
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDocproof
+                setter: setDocproof
+            type: MainlyCode\Reeleezee\ValueObject\DocproofLoginType

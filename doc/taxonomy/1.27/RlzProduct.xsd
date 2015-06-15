@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--  Intellectual Property Reeleezee B.V.  -->
+<!--  Version Reeleezee Product Version 1.27  -->
+<!--  Released by Reeleezee B.V. www.reeleezee.nl  -->
+
+<xs:schema 
+	id="ReeleezeeProduct"
+	version="1.27"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:rse="https://portal.reeleezee.nl/taxonomy/1.27/schemaExtentions"
+	xsi:schemaLocation="https://portal.reeleezee.nl/taxonomy/1.27/schemaExtentions SchemaExtentions.xsd" 
+	elementFormDefault="qualified">
+	
+	<xs:include schemaLocation="RlzBaseStructures.xsd" />
+	<xs:include schemaLocation="RlzBaseTypes.xsd" />
+	<xs:include schemaLocation="RlzBaseEnums.xsd" />
+
+	<!-- definition of complex elements -->
+	
+	<xs:complexType name="ProductListType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="Product" type="ProductType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	
+	<xs:complexType name="ProductType">
+		<xs:sequence>
+			<xs:element name="Code" type="ProductCodeType" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Productcode</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Name" minOccurs="0" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Naam</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Description" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Omschrijving</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="NonEmptyMultilineStringType">
+						<xs:maxLength value="200" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Comment" type="NonEmptyMultilineStringType" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Commentaar</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Price" type="PricePreciseType" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Verkoopprijs</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="CostPrice" type="PricePreciseType" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Kostprijs</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="PurchasePrice" type="PricePreciseType" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Inkoopprijs</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="Unit" type="UnitCodeType" minOccurs="0" default="ST">
+				<xs:annotation>
+					<xs:documentation>Eenheid</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:choice>
+				<xs:group ref="AccountReferenceGroup" minOccurs="0" />
+				<xs:element name="AccountNumber" type="AccountNumberType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Grootboekrekening omzet (VERVALLEN, GEBRUIK AccountReference)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			
+			<xs:element name="VatGroup" type="VatGroupType" minOccurs="0" default="HP" nillable="true">
+				<xs:annotation>
+					<xs:documentation>BTW groep</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="VendorProductCode" minOccurs="0" nillable="true" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Productcode leverancier</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="25" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="Barcode" minOccurs="0" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Barcode</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Type" minOccurs="0" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Producttype</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="20" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:group ref="NillableOutputTypeReferenceGroup" minOccurs="0" />
+
+			<xs:element name="Sorting" minOccurs="0" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Sortering</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="20" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="Active" type="xs:boolean" minOccurs="0" default="true">
+				<xs:annotation>
+					<xs:documentation>Actief</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ProductGroupReferenceList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="ProductGroupReference" type="ProductGroupReferenceType">
+							<xs:annotation>
+								<xs:documentation>Productgroep referentie</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:group ref="NillableCashRegisterTypeReferenceGroup" minOccurs="0" />
+		</xs:sequence>
+	
+		<xs:attribute name="Code" type="ProductCodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Productcode -> herkenning van bestaand / nieuw product</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		
+		<xs:attribute name="InternalRlzID" type="ReeleezeeIdType" use="optional">
+			<xs:annotation>
+				<xs:documentation>DO NOT USE !</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="ProductGroupReferenceType">
+		<xs:attribute name="Description" use="optional">
+			<xs:annotation>
+				<xs:documentation>Omschrijving</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="TrimmedNonEmptyStringType">
+					<xs:maxLength value="40" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+
+</xs:schema>

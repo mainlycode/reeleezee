@@ -1,0 +1,22 @@
+MainlyCode\Reeleezee\ValueObject\PurchaseInvoiceVatType:
+    properties:
+        code:
+            expose: true
+            access_type: public_method
+            serialized_name: Code
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getCode
+                setter: setCode
+            type: string
+        amount:
+            expose: true
+            access_type: public_method
+            serialized_name: Amount
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getAmount
+                setter: setAmount
+            type: float

@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--  Intellectual Property Reeleezee B.V.  -->
+<!--  Version Reeleezee BaseStructures Version 1.27  -->
+<!--  Released by Reeleezee B.V. www.reeleezee.nl  -->
+
+<xs:schema 
+	id="ReeleezeeBaseStructures"
+	version="1.27"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:rse="https://portal.reeleezee.nl/taxonomy/1.27/schemaExtentions"
+	xsi:schemaLocation="https://portal.reeleezee.nl/taxonomy/1.27/schemaExtentions SchemaExtentions.xsd" 
+	elementFormDefault="qualified">
+	
+	
+	
+	<xs:include schemaLocation="RlzBaseTypes.xsd" />
+	<xs:include schemaLocation="RlzBaseEnums.xsd" />
+	
+
+	<xs:complexType name="ExportInfoType">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:normalizedString" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Naam</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Source" type="xs:normalizedString" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Bron</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Destination" type="xs:normalizedString" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Bestemming</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Reference" type="xs:normalizedString" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Kenmerk</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="CreateDateTime" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Datum/tijd aanmaken</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="FromDateTime" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Datum/tijd vanaf</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="ToDateTime" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Datum/tijd tot</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Comment" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Commentaar</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="AddressType">
+		<xs:sequence>
+			<xs:element name="Street" minOccurs="0" nillable="true" rse:CanIgnore="true" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Straatnaam</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="NonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Number" minOccurs="0" nillable="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Huisnummer + Huisnummer toevoeging</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="NonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Zipcode" minOccurs="0" nillable="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Postcode</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="NonEmptyStringType">
+						<xs:maxLength value="10" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="City" minOccurs="0" nillable="true" rse:CanIgnore="true" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Woonplaats</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="NonEmptyStringType">
+						<xs:maxLength value="30" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="CountryCode" type="ISOCountryCode" minOccurs="0" default="NL">
+				<xs:annotation>
+					<xs:documentation>Landcode</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<!--
+		<xs:attribute name="Type" type="AddressTypeType" use="required">
+			<xs:annotation>
+				<xs:documentation>Soort</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		-->
+	</xs:complexType>
+	
+	
+	<xs:complexType name="RecipientAddressType">
+		<xs:sequence>
+			<xs:element name="Name" minOccurs="0" nillable="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Naam</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="NonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="AttentionOf" minOccurs="0" nillable="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Ter attentie van</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="NonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		
+			<xs:element name="Street" minOccurs="0" nillable="true" rse:CanIgnore="true" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Straatnaam</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="NonEmptyStringType">
+						<xs:maxLength value="30" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Number" minOccurs="0" nillable="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Huisnummer + Huisnummer toevoeging</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="NonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Zipcode" minOccurs="0" nillable="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Postcode</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="NonEmptyStringType">
+						<xs:maxLength value="10" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="City" minOccurs="0" nillable="true" rse:CanIgnore="true" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Woonplaats</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="NonEmptyStringType">
+						<xs:maxLength value="30" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="CountryCode" type="ISOCountryCode" minOccurs="0" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Landcode</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ImportResultType">
+		<xs:sequence>
+			<xs:element name="ExportInfo" type="ExportInfoType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Informatie over de export</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="MaxMessage" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="Level" type="MessageLevelType" use="required" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			
+			<xs:element name="MessageList" type="MessageListType" minOccurs="0" />
+			
+			<xs:element name="Person" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="TotalProcessed" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalCreated" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalUpdated" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalDeleted" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalIgnored" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="MessageList" type="MessageListType" minOccurs="0" />
+						
+						<xs:element name="Login" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="TotalProcessed" type="xs:nonNegativeInteger" minOccurs="1" />
+									<xs:element name="TotalCreated" type="xs:nonNegativeInteger" minOccurs="1" />
+									<xs:element name="TotalUpdated" type="xs:nonNegativeInteger" minOccurs="1" />
+									<xs:element name="TotalDeleted" type="xs:nonNegativeInteger" minOccurs="1" />
+									<xs:element name="TotalIgnored" type="xs:nonNegativeInteger" minOccurs="1" />
+									<xs:element name="MessageList" type="MessageListType" minOccurs="0" />
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			
+			<xs:element name="Customer" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="TotalProcessed" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalCreated" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalUpdated" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalDeleted" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalIgnored" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="MessageList" type="MessageListType" minOccurs="0" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			
+			<xs:element name="Vendor" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="TotalProcessed" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalCreated" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalUpdated" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalDeleted" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalIgnored" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="MessageList" type="MessageListType" minOccurs="0" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="Employee" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="TotalProcessed" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalCreated" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalUpdated" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalDeleted" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalIgnored" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="MessageList" type="MessageListType" minOccurs="0" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			
+			<xs:element name="SalesInvoice" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="TotalProcessed" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalCreated" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalUpdated" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalDeleted" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalIgnored" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="MessageList" type="MessageListType" minOccurs="0" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			
+			<xs:element name="PurchaseInvoice" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="TotalProcessed" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalCreated" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalUpdated" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalDeleted" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalIgnored" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="MessageList" type="MessageListType" minOccurs="0" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			
+			<xs:element name="ManualJournal" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="TotalProcessed" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalCreated" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalUpdated" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalDeleted" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalIgnored" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="MessageList" type="MessageListType" minOccurs="0" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			
+			<xs:element name="Product" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="TotalProcessed" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalCreated" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalUpdated" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalDeleted" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalIgnored" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="MessageList" type="MessageListType" minOccurs="0" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			
+			<xs:element name="Account" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="TotalProcessed" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalCreated" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalUpdated" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalDeleted" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalIgnored" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="MessageList" type="MessageListType" minOccurs="0" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			
+			<xs:element name="DossierFile" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="TotalProcessed" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalCreated" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalUpdated" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalDeleted" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="TotalIgnored" type="xs:nonNegativeInteger" minOccurs="1" />
+						<xs:element name="MessageList" type="MessageListType" minOccurs="0" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="ProcessedDateTime" type="xs:dateTime" use="required" />
+		<xs:attribute name="Succeeded" type="xs:boolean" use="required" />
+	</xs:complexType>
+	
+	<xs:complexType name="MessageListType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="Message">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="Level" type="MessageLevelType" use="required" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+	<xs:group name="DefaultDimensionsGroup">
+		<xs:sequence>
+			<xs:group ref="NillableAccountReferenceGroup" minOccurs="0" />
+			<xs:group ref="NillableProductReferenceGroup" minOccurs="0" />
+			<xs:group ref="NillableEmployeeReferenceGroup" minOccurs="0" />
+			<xs:group ref="NillableDepartmentReferenceGroup" minOccurs="0" />
+			<xs:group ref="NillableProjectReferenceGroup" minOccurs="0" />
+		</xs:sequence>
+	</xs:group>
+
+	<xs:group name="BankAccountsGroup">
+		<xs:sequence>
+			<xs:element name="BankAccounts">
+				<xs:annotation>
+					<xs:documentation>Entity payment accounts</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="BankAccount" type="BankAccountType" minOccurs="0" maxOccurs="unbounded" nillable="true" rse:CanIgnore="true" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+
+	<xs:group name="BankAccountsWithDirectDebitAuthorizationGroup">
+		<xs:sequence>
+			<xs:element name="BankAccounts">
+				<xs:annotation>
+					<xs:documentation>Entity payment accounts</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="BankAccount" minOccurs="0" maxOccurs="unbounded" nillable="true" rse:CanIgnore="true">
+							<xs:complexType >
+								<xs:complexContent>
+									<xs:extension base="BankAccountType">
+										<xs:sequence>
+											<xs:element name="DirectDebitAuthorization" minOccurs="0" nillable="true">
+												<xs:complexType>
+													<xs:sequence>
+														<xs:group ref="PaymentAccountReferenceGroup" minOccurs="0">
+															<xs:annotation>
+																<xs:documentation></xs:documentation>
+															</xs:annotation>
+														</xs:group>
+														
+														<xs:element name="SignatureDate" minOccurs="0" type="xs:date" default="2009-11-01">
+															<xs:annotation>
+																<xs:documentation>Signature date. Will be set to 11/01/2009 if SignatureDate is omitted or before this date.</xs:documentation>
+															</xs:annotation>
+														</xs:element>
+														<xs:element name="Type" type="DirectDebitAuthorizationTypeType">
+															<xs:annotation>
+																<xs:documentation>Type</xs:documentation>
+															</xs:annotation>
+														</xs:element>
+														<xs:element name="MandateID" minOccurs="0" rse:CanAutoTrim="true">
+															<xs:annotation>
+																<xs:documentation>Mandate ID</xs:documentation>
+															</xs:annotation>
+															<xs:simpleType>
+																<xs:restriction base="xs:normalizedString">
+																	<xs:minLength value="1" />
+																	<xs:maxLength value="35" />
+																	<xs:pattern value="[^\s]+" />
+																</xs:restriction>																
+															</xs:simpleType>
+														</xs:element>
+														<xs:element name="MaxAmount" type="PositivePriceType" minOccurs="0" nillable="true">
+															<xs:annotation>
+																<xs:documentation>Maximum amount per transaction</xs:documentation>
+															</xs:annotation>
+														</xs:element>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+
+	<xs:complexType name="BankAccountType">
+		<xs:annotation>
+			<xs:documentation>Entity payment account</xs:documentation>
+		</xs:annotation>
+
+		<xs:sequence>
+			<xs:element name="IsDefault" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates that this payment account is the default for this entity.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BBAN" type="BasicBankAccountNumberType" nillable="true" minOccurs="0" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Basic Bank Account Number</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IBAN" type="InternationalBankAccountNumberType" nillable="true" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>International Bank Account Number</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BIC" type="BusinessIdentifierCodeType" nillable="true" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Business Identifier Code</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="Payee" minOccurs="0" rse:CanAutoTrim="true" rse:CanAutoTruncate="true">
+				<xs:annotation>
+					<xs:documentation>Naam rekeninghouder</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="40" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="CountryCode" type="ISOCountryCode" minOccurs="0" default="NL">
+				<xs:annotation>
+					<xs:documentation>Landcode</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="City" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Plaats</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="30" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+
+		<xs:attribute name="BBAN" type="BasicBankAccountNumberType" use="optional" rse:CanAutoTrim="true">
+			<xs:annotation>
+				<xs:documentation>Basic Bank Account Number</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="IBAN" type="InternationalBankAccountNumberType" use="optional" rse:CanAutoTrim="true">
+			<xs:annotation>
+				<xs:documentation>International Bank Account Number</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+</xs:schema>

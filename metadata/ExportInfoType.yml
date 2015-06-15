@@ -1,0 +1,82 @@
+MainlyCode\Reeleezee\ValueObject\ExportInfoType:
+    properties:
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getName
+                setter: setName
+            type: string
+        source:
+            expose: true
+            access_type: public_method
+            serialized_name: Source
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getSource
+                setter: setSource
+            type: string
+        destination:
+            expose: true
+            access_type: public_method
+            serialized_name: Destination
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDestination
+                setter: setDestination
+            type: string
+        reference:
+            expose: true
+            access_type: public_method
+            serialized_name: Reference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getReference
+                setter: setReference
+            type: string
+        createDateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: CreateDateTime
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getCreateDateTime
+                setter: setCreateDateTime
+            type: Goetas\Xsd\XsdToPhp\XMLSchema\DateTime
+        fromDateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: FromDateTime
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getFromDateTime
+                setter: setFromDateTime
+            type: Goetas\Xsd\XsdToPhp\XMLSchema\DateTime
+        toDateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: ToDateTime
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getToDateTime
+                setter: setToDateTime
+            type: Goetas\Xsd\XsdToPhp\XMLSchema\DateTime
+        comment:
+            expose: true
+            access_type: public_method
+            serialized_name: Comment
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getComment
+                setter: setComment
+            type: string

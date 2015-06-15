@@ -1,0 +1,166 @@
+MainlyCode\Reeleezee\ValueObject\ImportOrExportType:
+    properties:
+        exportInfo:
+            expose: true
+            access_type: public_method
+            serialized_name: ExportInfo
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getExportInfo
+                setter: setExportInfo
+            type: MainlyCode\Reeleezee\ValueObject\ExportInfoType
+        customerList:
+            expose: true
+            access_type: public_method
+            serialized_name: CustomerList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getCustomerList
+                setter: setCustomerList
+            type: array<MainlyCode\Reeleezee\ValueObject\CustomerType>
+            xml_list:
+                inline: false
+                entry_name: Customer
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+        vendorList:
+            expose: true
+            access_type: public_method
+            serialized_name: VendorList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getVendorList
+                setter: setVendorList
+            type: array<MainlyCode\Reeleezee\ValueObject\VendorType>
+            xml_list:
+                inline: false
+                entry_name: Vendor
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+        employeeList:
+            expose: true
+            access_type: public_method
+            serialized_name: EmployeeList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getEmployeeList
+                setter: setEmployeeList
+            type: array<MainlyCode\Reeleezee\ValueObject\EmployeeType>
+            xml_list:
+                inline: false
+                entry_name: Employee
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+        personList:
+            expose: true
+            access_type: public_method
+            serialized_name: PersonList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getPersonList
+                setter: setPersonList
+            type: array<MainlyCode\Reeleezee\ValueObject\PersonType>
+            xml_list:
+                inline: false
+                entry_name: Person
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+        salesInvoiceList:
+            expose: true
+            access_type: public_method
+            serialized_name: SalesInvoiceList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getSalesInvoiceList
+                setter: setSalesInvoiceList
+            type: array<MainlyCode\Reeleezee\ValueObject\SalesInvoiceType>
+            xml_list:
+                inline: false
+                entry_name: SalesInvoice
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+        purchaseInvoiceList:
+            expose: true
+            access_type: public_method
+            serialized_name: PurchaseInvoiceList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getPurchaseInvoiceList
+                setter: setPurchaseInvoiceList
+            type: array<MainlyCode\Reeleezee\ValueObject\PurchaseInvoiceType>
+            xml_list:
+                inline: false
+                entry_name: PurchaseInvoice
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+        manualJournalList:
+            expose: true
+            access_type: public_method
+            serialized_name: ManualJournalList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getManualJournalList
+                setter: setManualJournalList
+            type: array<MainlyCode\Reeleezee\ValueObject\ManualJournalType>
+            xml_list:
+                inline: false
+                entry_name: ManualJournal
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+        productList:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getProductList
+                setter: setProductList
+            type: array<MainlyCode\Reeleezee\ValueObject\ProductType>
+            xml_list:
+                inline: false
+                entry_name: Product
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+        accountList:
+            expose: true
+            access_type: public_method
+            serialized_name: AccountList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getAccountList
+                setter: setAccountList
+            type: array<MainlyCode\Reeleezee\ValueObject\AccountType>
+            xml_list:
+                inline: false
+                entry_name: Account
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+        dossierFileList:
+            expose: true
+            access_type: public_method
+            serialized_name: DossierFileList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDossierFileList
+                setter: setDossierFileList
+            type: array<MainlyCode\Reeleezee\ValueObject\DossierFileType>
+            xml_list:
+                inline: false
+                entry_name: DossierFile
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+        customerTaxDepositList:
+            expose: true
+            access_type: public_method
+            serialized_name: CustomerTaxDepositList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getCustomerTaxDepositList
+                setter: setCustomerTaxDepositList
+            type: array<MainlyCode\Reeleezee\ValueObject\CustomerTaxDepositType>
+            xml_list:
+                inline: false
+                entry_name: CustomerTaxDeposit
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'

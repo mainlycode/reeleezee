@@ -1,0 +1,135 @@
+MainlyCode\Reeleezee\ValueObject\PurchaseInvoiceType:
+    properties:
+        reference:
+            expose: true
+            access_type: public_method
+            serialized_name: Reference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getReference
+                setter: setReference
+            type: string
+        internalRlzID:
+            expose: true
+            access_type: public_method
+            serialized_name: InternalRlzID
+            accessor:
+                getter: getInternalRlzID
+                setter: setInternalRlzID
+            xml_attribute: true
+            type: string
+        contactPersonReference:
+            expose: true
+            access_type: public_method
+            serialized_name: ContactPersonReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getContactPersonReference
+                setter: setContactPersonReference
+            type: MainlyCode\Reeleezee\ValueObject\PurchaseInvoiceType\ContactPersonReferenceAType
+        contactPerson:
+            expose: true
+            access_type: public_method
+            serialized_name: ContactPerson
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getContactPerson
+                setter: setContactPerson
+            type: MainlyCode\Reeleezee\ValueObject\PurchaseInvoiceType\ContactPersonAType
+        vendorReference:
+            expose: true
+            access_type: public_method
+            serialized_name: VendorReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getVendorReference
+                setter: setVendorReference
+            type: MainlyCode\Reeleezee\ValueObject\PurchaseInvoiceType\VendorReferenceAType
+        vendorID:
+            expose: true
+            access_type: public_method
+            serialized_name: VendorID
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getVendorID
+                setter: setVendorID
+            type: integer
+        documentDate:
+            expose: true
+            access_type: public_method
+            serialized_name: DocumentDate
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDocumentDate
+                setter: setDocumentDate
+            type: 'DateTime<''Y-m-d''>'
+        bookDate:
+            expose: true
+            access_type: public_method
+            serialized_name: BookDate
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getBookDate
+                setter: setBookDate
+            type: 'DateTime<''Y-m-d''>'
+        paymentDueDate:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentDueDate
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getPaymentDueDate
+                setter: setPaymentDueDate
+            type: 'DateTime<''Y-m-d''>'
+        isVatIncludedInPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: IsVatIncludedInPrice
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getIsVatIncludedInPrice
+                setter: setIsVatIncludedInPrice
+            type: boolean
+        status:
+            expose: true
+            access_type: public_method
+            serialized_name: Status
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getStatus
+                setter: setStatus
+            type: string
+        paymentReference:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getPaymentReference
+                setter: setPaymentReference
+            type: string
+        lineList:
+            expose: true
+            access_type: public_method
+            serialized_name: LineList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getLineList
+                setter: setLineList
+            type: array<MainlyCode\Reeleezee\ValueObject\PurchaseInvoiceLineType>
+            xml_list:
+                inline: false
+                entry_name: Line
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'

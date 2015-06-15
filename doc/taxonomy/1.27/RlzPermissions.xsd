@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--  Intellectual Property Reeleezee B.V.  -->
+<!--  Version Reeleezee Dossier Version 1.27  -->
+<!--  Released by Reeleezee B.V. www.reeleezee.nl  -->
+
+<xs:schema
+	id="ReeleezeePermissions"
+	version="1.27"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:rse="https://portal.reeleezee.nl/taxonomy/1.27/schemaExtentions"
+	xsi:schemaLocation="https://portal.reeleezee.nl/taxonomy/1.27/schemaExtentions SchemaExtentions.xsd" 
+	elementFormDefault="qualified">
+	
+	<xs:include schemaLocation="RlzBaseStructures.xsd" />
+	<xs:include schemaLocation="RlzBaseTypes.xsd" />
+	<xs:include schemaLocation="RlzBaseEnums.xsd" />
+
+
+	<xs:group name="PermissionsGroup">
+		<xs:sequence>
+			<xs:element name="Permissions">
+				<xs:annotation>
+					<xs:documentation>Rechten</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="DeclarationSalaryTax" type="PermissionsCustomerType" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Aangifte loonheffing (LH)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+
+						<xs:element name="DeclarationVatReturn" type="PermissionsCustomerType" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Aangifte omzetbelasting (OB)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+
+						<xs:element name="DeclarationIntracommunitySupplies" type="PermissionsCustomerType" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Opgaaf intracommunautaire leveringen/prestaties (ICL/ICP)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+
+						<xs:element name="DeclarationIncomeTax" type="PermissionsCustomerType" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Aangifte inkomstenbelasting (IB)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+
+						<xs:element name="DeclarationCorporateIncomeTax" type="PermissionsCustomerType" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Aangifte vennootschapsbelasting (VpB)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+
+						<xs:element name="DeclarationShortCorporateIncomeTax" type="PermissionsCustomerType" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Verkorte winstaangifte vennootschapsbelasting (vWIA VPB)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+
+						<xs:element name="DeclarationCreditReport" type="PermissionsCustomerType" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Kredietrapportage</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+			</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+
+	<xs:complexType name="PermissionsCustomerType">
+		<xs:sequence>
+			<xs:group ref="CustomerReferenceGroup" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="HasAccess" type="xs:boolean" use="required" />
+	</xs:complexType>
+
+</xs:schema>

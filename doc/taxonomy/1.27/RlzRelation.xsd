@@ -1,0 +1,1545 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--  Intellectual Property Reeleezee B.V.  -->
+<!--  Version Reeleezee CustomerImport Version 1.27  -->
+<!--  Released by Reeleezee B.V. www.reeleezee.nl  -->
+
+<xs:schema 
+	id="ReeleezeeCustomerImport"
+	version="1.27"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns:rlz="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:rse="https://portal.reeleezee.nl/taxonomy/1.27/schemaExtentions"
+	xsi:schemaLocation="https://portal.reeleezee.nl/taxonomy/1.27/schemaExtentions SchemaExtentions.xsd" 
+	elementFormDefault="qualified">
+	
+	<xs:include schemaLocation="RlzBaseStructures.xsd" />
+	<xs:include schemaLocation="RlzBaseTypes.xsd" />
+	<xs:include schemaLocation="RlzBaseEnums.xsd" />
+	<xs:include schemaLocation="RlzPermissions.xsd" />
+	
+
+	<!-- definition of complex elements -->
+	
+	<xs:complexType name="CustomerListType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="Customer" type="CustomerType" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="VendorListType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="Vendor" type="VendorType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="EmployeeListType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="Employee" type="EmployeeType" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="PersonListType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="Person" type="PersonType" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ContactPersonListType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+		
+			<xs:choice>
+				<xs:group ref="ContactPersonReferenceGroup" />
+				<xs:element name="ContactPerson">
+					<xs:annotation>
+						<xs:documentation>Contactpersoon (VEROUDERD, GEBRUIK ContactPersonReference)</xs:documentation>
+					</xs:annotation>
+				
+					<xs:complexType>
+						<xs:attribute name="ID" type="xs:positiveInteger" use="optional">
+							<xs:annotation>
+								<xs:documentation>Persoonnummer</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						
+						<xs:attribute name="SocialSecurityNumber" type="SocialSecurityNumberType" use="optional">
+							<xs:annotation>
+								<xs:documentation>Burger Service Nummer</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						
+						<xs:attribute name="InternalRlzID" type="ReeleezeeIdType" use="optional">
+							<xs:annotation>
+								<xs:documentation>DO NOT USE !</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+	
+	</xs:complexType>
+
+	<xs:complexType name="CategoryListType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:group ref="NillableCategoryReferenceGroup" />
+		</xs:sequence>
+	</xs:complexType>
+
+	
+	<xs:complexType name="CustomerType">
+		<xs:sequence>
+			<xs:element name="ID" type="xs:positiveInteger" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Debiteurnummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="FullName" minOccurs="0" rse:CanAutoTrim="true" rse:CanAutoTruncate="true">
+				<xs:annotation>
+					<xs:documentation>Klant naam</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="SearchName" minOccurs="0" rse:CanAutoTrim="true" rse:CanAutoTruncate="true">
+				<xs:annotation>
+					<xs:documentation>Wordt gesorteerd op</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Code" type="CustomerCodeType" minOccurs="0" nillable="true" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Klantcode</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="EntityType" type="EntityTypeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Soort klant</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		
+			<xs:choice>
+				<xs:element name="DefaultAddress" type="AddressTypeType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Standaardadres</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				
+				<xs:element name="AddressForBilling" type="AddressTypeType" minOccurs="0" rse:Deprecated="true">
+					<xs:annotation>
+						<xs:documentation>Keuze factuuradres (VEROUDERD!)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+
+			<xs:element name="LanguageCode" type="ISOAvailableLanguageCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Taalcode</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="PhoneNumber" type="PhoneNumberType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Telefoonnummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="MobilePhoneNumber" type="PhoneNumberType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Mobiel telefoonnummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="FaxNumber" type="PhoneNumberType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Faxnummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="EmailAddress" type="EmailAddressType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>E-mailadres</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="WebsiteAddress" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Website</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="200" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Comment" type="NonEmptyMultilineStringType" minOccurs="0" nillable="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Memo</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="ChamberOfCommerceNumber" type="ChamberOfCommerceNumberType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>KvK nummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="ChamberOfCommerceCity" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>KvK stad</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="30" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="FiscalIdentificationNumber" type="FiscalIdentificationNumberType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true" rse:Deprecated="true">
+				<xs:annotation>
+					<xs:documentation>Fiscaal nummer (VEROUDERD!)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="TaxDepositLHNumber" type="TaxDepositLHNumberType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true" rse:Deprecated="true">
+				<xs:annotation>
+					<xs:documentation>Aangiftenummer LH (VEROUDERD!)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="TaxDepositOBNumber" type="TaxDepositOBNumberType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true" rse:Deprecated="true">
+				<xs:annotation>
+					<xs:documentation>Aangiftenummer OB (VEROUDERD!)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="TaxDepositICLNumber" type="TaxDepositICLNumberType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true" rse:Deprecated="true">
+				<xs:annotation>
+					<xs:documentation>Aangiftenummer ICL (VEROUDERD!)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<!--<xs:element name="RelationList" minOccurs="0" rse:CanIgnore="true" rse:ImportUseChildType="true">
+				<xs:annotation>
+					<xs:documentation>Relaties</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element >
+							<xs:complexType>
+								<
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="FiscalIdentification" minOccurs="0" maxOccurs="unbounded" nillable="true" rse:CanIgnore="true">
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>-->
+					
+			<xs:element name="FiscalIdentifications" minOccurs="0" rse:CanIgnore="true" rse:ImportUseChildType="true">
+				<xs:annotation>
+					<xs:documentation>Fiscale nummers</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="FiscalIdentification" minOccurs="0" maxOccurs="unbounded" nillable="true" rse:CanIgnore="true">
+							<xs:annotation>
+								<xs:documentation>Fiscaal nummer</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Number" type="FiscalIdentificationNumberType" minOccurs="0" rse:CanAutoTrim="true" />
+								</xs:sequence>
+								<xs:attribute name="Number" type="FiscalIdentificationNumberType" use="optional" rse:CanAutoTrim="true" />
+							</xs:complexType>
+						</xs:element>
+
+						<xs:element  name="VatReturn" minOccurs="0" maxOccurs="unbounded" nillable="true" rse:CanIgnore="true">
+							<xs:annotation>
+								<xs:documentation>Aangiftenummer omzetbelasting (OB)</xs:documentation>
+							</xs:annotation>
+							
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Number" type="TaxDepositOBNumberType" minOccurs="0" rse:CanAutoTrim="true" />
+									<xs:element name="DeclarationPeriod" type="DeclarationPeriodType" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Aangifte periode</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+								<xs:attribute name="Number" type="TaxDepositOBNumberType" use="optional" rse:CanAutoTrim="true" />
+							</xs:complexType>
+						</xs:element>
+
+						<xs:element  name="SalaryTax" minOccurs="0" maxOccurs="unbounded" nillable="true" rse:CanIgnore="true">
+							<xs:annotation>
+								<xs:documentation>Aangiftenummer loonheffing (LH)</xs:documentation>
+							</xs:annotation>
+
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Number" type="TaxDepositLHNumberType" minOccurs="0" rse:CanAutoTrim="true" />
+									<xs:element name="DeclarationPeriod" type="DeclarationPeriodType" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Aangifte periode</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+								<xs:attribute name="Number" type="TaxDepositLHNumberType" use="optional" rse:CanAutoTrim="true" />
+							</xs:complexType>
+						</xs:element>
+
+						<xs:element name="IntracommunitySupplies" minOccurs="0" maxOccurs="unbounded" nillable="true" rse:CanIgnore="true">
+							<xs:annotation>
+								<xs:documentation>Aangiftenummer intracommunautaire leveringen (ICL)</xs:documentation>
+							</xs:annotation>
+
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Number" type="TaxDepositICPNumberType" minOccurs="0" rse:CanAutoTrim="true" />
+									<xs:element name="DeclarationPeriod" type="DeclarationPeriodType" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Aangifte periode</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+								<xs:attribute name="Number" type="TaxDepositICPNumberType" use="optional" rse:CanAutoTrim="true" />
+							</xs:complexType>
+						</xs:element>
+
+						<xs:element name="IntracommunityPerformance" minOccurs="0" maxOccurs="unbounded" nillable="true" rse:CanIgnore="true">
+							<xs:annotation>
+								<xs:documentation>Aangiftenummer intracommunautaire prestaties (ICP)</xs:documentation>
+							</xs:annotation>
+
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Number" type="TaxDepositICPNumberType" minOccurs="0" rse:CanAutoTrim="true" />
+									<xs:element name="DeclarationPeriod" type="DeclarationPeriodType" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Aangifte periode</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+								<xs:attribute name="Number" type="TaxDepositICPNumberType" use="optional" rse:CanAutoTrim="true" />
+							</xs:complexType>
+						</xs:element>
+
+						<xs:element name="ShortCorporateIncomeTax" minOccurs="0" maxOccurs="unbounded" nillable="true" rse:CanIgnore="true">
+							<xs:annotation>
+								<xs:documentation>Deponeringsnummer Verkorte winstaangifte vennootschapsbelasting (vWIA VPB)</xs:documentation>
+							</xs:annotation>
+
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Number" type="DepositVWiaVPBNumberType" minOccurs="0" rse:CanAutoTrim="true" />
+									<xs:element name="DeclarationPeriod" type="DeclarationPeriodType" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Aangifte periode</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+								<xs:attribute name="Number" type="DepositVWiaVPBNumberType" use="optional" rse:CanAutoTrim="true" />
+							</xs:complexType>
+						</xs:element>
+
+						<xs:element name="CorporateIncomeTax" minOccurs="0" maxOccurs="unbounded" nillable="true" rse:CanIgnore="true">
+							<xs:annotation>
+								<xs:documentation>Deponeringsnummer vennootschapsbelasting (VPB)</xs:documentation>
+							</xs:annotation>
+
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Number" type="DepositVPBNumberType" minOccurs="0" rse:CanAutoTrim="true" />
+									<xs:element name="DeclarationPeriod" type="DeclarationPeriodType" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Aangifte periode</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+								<xs:attribute name="Number" type="DepositVPBNumberType" use="optional" rse:CanAutoTrim="true" />
+							</xs:complexType>
+						</xs:element>
+						
+
+					</xs:sequence>
+					
+				</xs:complexType>
+			</xs:element>
+
+			<xs:group ref="BankAccountsWithDirectDebitAuthorizationGroup" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Bankrekeningen van deze relatie</xs:documentation>
+				</xs:annotation>
+			</xs:group>
+
+			<xs:group ref="PaymentAccountReferenceGroup" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Standaard eigen betaalrekening</xs:documentation>
+				</xs:annotation>
+			</xs:group>
+
+			<xs:group ref="PaymentMethodReferenceGroup" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Standaard betaalwijze</xs:documentation>
+				</xs:annotation>
+			</xs:group>
+
+			<xs:element name="DefaultInvoiceDueDays" type="xs:integer" minOccurs="0" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Betalingstermijn in dagen</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:choice minOccurs="0">
+				<xs:element name="Openingbalance" type="OpeningbalanceType" minOccurs="1" nillable="true">
+					<xs:annotation>
+						<xs:documentation>Openingsbalans</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				
+				<xs:sequence>
+					<xs:element name="OpeningbalanceAmount" type="PriceType" minOccurs="1" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Openstaande post: Bedrag (VEROUDERD!)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element name="OpeningbalanceDescription" minOccurs="0" rse:CanAutoTrim="true">
+						<xs:annotation>
+							<xs:documentation>Openstaande post: Referentie (VEROUDERD!)</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="TrimmedNonEmptyStringType">
+								<xs:maxLength value="64" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:choice>								
+			
+			<xs:choice>
+				<xs:group ref="NillableBranchReferenceGroup" minOccurs="0" />
+				
+				<xs:element name="Branch" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+					<xs:annotation>
+						<xs:documentation>Hoort bij vestiging (VEROUDERD, GEBRUIK BranchReference)</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="TrimmedNonEmptyStringType">
+							<xs:maxLength value="50" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:choice>
+
+			<xs:group ref="NillableDepartmentReferenceGroup" minOccurs="0" />
+
+			<xs:element name="AddressList" minOccurs="0" rse:ImportUseChildType="true">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Address" minOccurs="0" maxOccurs="unbounded" nillable="true">
+							<xs:complexType>
+								<xs:complexContent mixed="false">
+									<xs:extension base="AddressType">
+										<xs:attribute name="Type" use="required">
+											<xs:simpleType>
+												<xs:annotation>
+													<xs:documentation>Soort</xs:documentation>
+												</xs:annotation>
+
+												<xs:restriction base="AddressTypeType">
+													<xs:enumeration value="Office">
+														<xs:annotation>
+															<xs:documentation>Vestigingsadres</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+													<xs:enumeration value="Delivery">
+														<xs:annotation>
+															<xs:documentation>Afleveradres</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+				<xs:unique name="UniqueAddressList">
+					<xs:selector xpath="rlz:Address" />
+					<xs:field xpath="@Type" />
+				</xs:unique>
+			</xs:element>
+			
+			<xs:element name="ContactPersonList" type="ContactPersonListType" minOccurs="0">
+				<xs:unique name="UniqueContactPersonList1">
+					<xs:selector xpath="rlz:ContactPerson" />
+					<xs:field xpath="@ID" />
+				</xs:unique>
+				<xs:unique name="UniqueContactPersonList2">
+					<xs:selector xpath="rlz:ContactPerson" />
+					<xs:field xpath="@Code" />
+				</xs:unique>
+				<xs:unique name="UniqueContactPersonList3">
+					<xs:selector xpath="rlz:ContactPerson" />
+					<xs:field xpath="@SocialSecurityNumber" />
+				</xs:unique>
+				<xs:unique name="UniqueContactPersonList4">
+					<xs:selector xpath="rlz:ContactPerson" />
+					<xs:field xpath="@InternalRlzID" />
+				</xs:unique>
+			</xs:element>
+
+			<xs:element name="CategoryList" type="CategoryListType" minOccurs="0" />
+
+			<xs:element name="AccountManagerList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence minOccurs="0" maxOccurs="unbounded">
+						<xs:group ref="NillableEmployeeReferenceGroup" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="RelationList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="EmployeeReference" nillable="true" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Medewerker referentie</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="EmployeeReferenceType">
+										<xs:attribute name="Type" use="required">
+											<xs:annotation>
+												<xs:documentation>Soort relatie</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:token">
+													<xs:enumeration value="HasAccountManager">
+														<xs:annotation>
+															<xs:documentation>Account manager</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+
+													<xs:enumeration value="HasRegionManager">
+														<xs:annotation>
+															<xs:documentation>Regio manager</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+
+						<xs:element name="ContactPersonReference" nillable="true" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Contactpersoon referentie</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="ContactPersonReferenceType">
+										<xs:attribute name="Type" use="required">
+											<xs:annotation>
+												<xs:documentation>Soort relatie</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:token">
+													<xs:enumeration value="HasContact">
+														<xs:annotation>
+															<xs:documentation>Contactpersoon</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+						
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			
+			<xs:element name="DefaultInvoiceSendMethod" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Default invoice address</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="AddressReference">
+							<xs:annotation>
+								<xs:documentation>By normal postal address</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="EmailAddressReference">
+							<xs:annotation>
+								<xs:documentation>By e-mail. The e-mail address will be added to the customer if it doesn't exist.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:attribute name="EmailAddress" type="EmailAddressType" rse:CanAutoTrim="true" use="required" />
+							</xs:complexType>
+						</xs:element>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			
+		</xs:sequence>
+
+		<xs:attribute name="ID" type="xs:positiveInteger" use="optional">
+			<xs:annotation>
+				<xs:documentation>Debiteurnummer -> herkenning van bestaande / nieuwe klant</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		
+		<xs:attribute name="Code" type="CustomerCodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Debiteurcode -> herkenning van bestaande / nieuwe klant</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		
+		<xs:attribute name="InternalRlzID" type="ReeleezeeIdType" use="optional">
+			<xs:annotation>
+				<xs:documentation>DO NOT USE !</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		
+		
+	</xs:complexType>
+	
+	
+	
+	
+	<xs:complexType name="VendorType">
+		<xs:sequence>
+			<xs:element name="ID" type="xs:positiveInteger" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Crediteurnummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="FullName" minOccurs="0" rse:CanAutoTrim="true" rse:CanAutoTruncate="true">
+				<xs:annotation>
+					<xs:documentation>Leverancier naam</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="SearchName" minOccurs="0" rse:CanAutoTrim="true" rse:CanAutoTruncate="true">
+				<xs:annotation>
+					<xs:documentation>Wordt gesorteerd op</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Code" minOccurs="0" nillable="true" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Leveranciercode</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		
+			<xs:element name="DefaultAddress" type="AddressTypeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Standaardadres</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="LanguageCode" type="ISOAvailableLanguageCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Taalcode</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="PhoneNumber" type="PhoneNumberType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Telefoonnummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="MobilePhoneNumber" type="PhoneNumberType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Mobiel telefoonnummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="FaxNumber" type="PhoneNumberType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Faxnummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="EmailAddress" type="EmailAddressType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>E-mailadres</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="WebsiteAddress" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Website</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Comment" type="NonEmptyMultilineStringType" minOccurs="0" nillable="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Memo</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="ChamberOfCommerceNumber" type="ChamberOfCommerceNumberType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>KvK nummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="ChamberOfCommerceCity" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>KvK stad</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="30" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="TaxDepositOBNumber" type="TaxDepositOBNumberType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Aangiftenummer OB</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:group ref="BankAccountsGroup" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Bankrekeningen van deze relatie</xs:documentation>
+				</xs:annotation>
+			</xs:group>
+			
+			<xs:element name="Openingbalance" type="OpeningbalanceType" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Openingsbalans</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:choice>
+				<xs:group ref="NillableBranchReferenceGroup" minOccurs="0" />
+
+				<xs:element name="Branch" minOccurs="0" nillable="true" rse:CanAutoTrim="true">
+					<xs:annotation>
+						<xs:documentation>Hoort bij vestiging (VEROUDERD, GEBRUIK BranchReference)</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="TrimmedNonEmptyStringType">
+							<xs:maxLength value="50" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:choice>
+			
+			<xs:element name="AddressList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Address" minOccurs="0" maxOccurs="unbounded" nillable="true">
+							<xs:complexType>
+								<xs:complexContent mixed="false">
+									<xs:extension base="AddressType">
+										<xs:attribute name="Type" use="required">
+											<xs:simpleType>
+												<xs:annotation>
+													<xs:documentation>Soort</xs:documentation>
+												</xs:annotation>
+
+												<xs:restriction base="AddressTypeType">
+													<xs:enumeration value="Office">
+														<xs:annotation>
+															<xs:documentation>Vestigingsadres</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+													<xs:enumeration value="Delivery">
+														<xs:annotation>
+															<xs:documentation>Afleveradres</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+				<xs:unique name="UniqueVendorAddressList">
+					<xs:selector xpath="rlz:Address" />
+					<xs:field xpath="@Type" />
+				</xs:unique>
+			</xs:element>
+			
+			<xs:element name="ContactPersonList" type="ContactPersonListType" minOccurs="0">
+				<xs:unique name="UniqueVendorContactPersonList1">
+					<xs:selector xpath="rlz:ContactPerson" />
+					<xs:field xpath="@ID" />
+				</xs:unique>
+				<xs:unique name="UniqueVendorContactPersonList2">
+					<xs:selector xpath="rlz:ContactPerson" />
+					<xs:field xpath="@Code" />
+				</xs:unique>
+				<xs:unique name="UniqueVendorContactPersonList3">
+					<xs:selector xpath="rlz:ContactPerson" />
+					<xs:field xpath="@SocialSecurityNumber" />
+				</xs:unique>
+				<xs:unique name="UniqueVendorContactPersonList4">
+					<xs:selector xpath="rlz:ContactPerson" />
+					<xs:field xpath="@InternalRlzID" />
+				</xs:unique>
+			</xs:element>
+
+			<xs:element name="RelationList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence minOccurs="0" maxOccurs="unbounded">
+
+						<xs:element name="ContactPersonReference" nillable="true" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Contactpersoon referentie</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="ContactPersonReferenceType">
+										<xs:attribute name="Type" use="required">
+											<xs:annotation>
+												<xs:documentation>Soort relatie</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:token">
+													<xs:enumeration value="HasContact">
+														<xs:annotation>
+															<xs:documentation>Contactpersoon</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			
+		</xs:sequence>
+		
+
+		
+		<xs:attribute name="ID" type="xs:positiveInteger" use="optional">
+			<xs:annotation>
+				<xs:documentation>Crediteurnummer -> herkenning van bestaande / nieuwe leverancier</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		
+		<xs:attribute name="Code" type="VendorCodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Crediteurcode -> herkenning van bestaande / nieuwe leverancier</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		
+		<xs:attribute name="InternalRlzID" type="ReeleezeeIdType" use="optional">
+			<xs:annotation>
+				<xs:documentation>DO NOT USE !</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+
+	<xs:complexType name="EmployeeType">
+		<xs:sequence>
+			<xs:element name="ID" type="xs:positiveInteger" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Medewerkernummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="FullName" minOccurs="0" rse:CanAutoTrim="true" rse:CanAutoTruncate="true">
+				<xs:annotation>
+					<xs:documentation>Medewerker naam</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="SearchName" minOccurs="0" rse:CanAutoTrim="true" rse:CanAutoTruncate="true">
+				<xs:annotation>
+					<xs:documentation>Wordt gesorteerd op</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="Code" type="EmployeeCodeType" minOccurs="0" nillable="true" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Medewerkercode</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Initials" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true" rse:CanAutoTruncate="true">
+				<xs:annotation>
+					<xs:documentation>Voorletters</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="10" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="FirstName" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true" rse:CanAutoTruncate="true">
+				<xs:annotation>
+					<xs:documentation>Voornaam</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="20" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="LastNamePrefix" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true" rse:CanAutoTruncate="true">
+				<xs:annotation>
+					<xs:documentation>Tussenvoegsel</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="10" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="LastName" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true" rse:CanAutoTruncate="true">
+				<xs:annotation>
+					<xs:documentation>Achternaam</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="Gender" type="GenderType" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Geslacht</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="LanguageCode" type="ISOAvailableLanguageCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Taalcode</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="PhoneNumber" type="PhoneNumberType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Telefoonnummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="MobilePhoneNumber" type="PhoneNumberType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Mobiel telefoonnummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="FaxNumber" type="PhoneNumberType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Faxnummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="EmailAddress" type="EmailAddressType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>E-mailadres</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="WebsiteAddress" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Website</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="Comment" type="NonEmptyMultilineStringType" minOccurs="0" nillable="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Memo</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:group ref="NillableBranchReferenceGroup" minOccurs="0" />			
+			<xs:group ref="NillableDepartmentReferenceGroup" minOccurs="0" />			
+
+			<xs:element name="AddressList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Address" minOccurs="0" maxOccurs="unbounded" nillable="true">
+							<xs:complexType>
+								<xs:complexContent mixed="false">
+									<xs:extension base="AddressType">
+										<xs:attribute name="Type" use="required">
+											<xs:simpleType>
+												<xs:annotation>
+													<xs:documentation>Soort</xs:documentation>
+												</xs:annotation>
+
+												<xs:restriction base="AddressTypeType">
+													<xs:enumeration value="Home">
+														<xs:annotation>
+															<xs:documentation>Thuisadres</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+				<xs:unique name="UniqueEmployeeAddressList">
+					<xs:selector xpath="rlz:Address" />
+					<xs:field xpath="@Type" />
+				</xs:unique>
+			</xs:element>
+
+			<xs:element name="CategoryList" type="CategoryListType" minOccurs="0">
+				<xs:key name="KeyEmployeeCategoryListID">
+					<xs:selector xpath="rlz:Category" />
+					<xs:field xpath="@Name|@InternalRlzID" />
+				</xs:key>
+			</xs:element>
+
+			<xs:element name="RelationList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="CustomerReference" nillable="true" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Klant referentie</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="CustomerReferenceType">
+										<xs:attribute name="Type" use="required">
+											<xs:annotation>
+												<xs:documentation>Soort relatie</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:token">
+													<xs:enumeration value="IsAccountManagerOf">
+														<xs:annotation>
+															<xs:documentation>Account manager</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+
+													<xs:enumeration value="IsRegionManagerOf">
+														<xs:annotation>
+															<xs:documentation>Regio manager</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			
+		</xs:sequence>
+
+
+
+		<xs:attribute name="ID" type="xs:positiveInteger" use="optional">
+			<xs:annotation>
+				<xs:documentation>Medewerkernummer -> herkenning van bestaande / nieuwe medewerker</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+
+		<xs:attribute name="Code" type="EmployeeCodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Medewerkercode -> herkenning van bestaande / nieuwe medewerker</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+
+		<xs:attribute name="InternalRlzID" type="ReeleezeeIdType" use="optional">
+			<xs:annotation>
+				<xs:documentation>DO NOT USE !</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	
+
+	<xs:complexType name="PersonType">
+		<xs:sequence>
+			<xs:element name="SocialSecurityNumber" type="SocialSecurityNumberType" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Social security number</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="ID" type="xs:positiveInteger" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Person id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="Code" type="PersonCodeType" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Person code</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SearchName" minOccurs="0" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Zoeknaam</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="Initials" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true" rse:CanAutoTruncate="true">
+				<xs:annotation>
+					<xs:documentation>Voorletters</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="10" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		
+			<xs:element name="FirstName" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true" rse:CanAutoTruncate="true">
+				<xs:annotation>
+					<xs:documentation>Voornaam</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="20" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="LastNamePrefix" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true" rse:CanAutoTruncate="true">
+				<xs:annotation>
+					<xs:documentation>Tussenvoegsel</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="10" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="LastName" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true" rse:CanAutoTruncate="true">
+				<xs:annotation>
+					<xs:documentation>Achternaam</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Gender" type="GenderType" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Geslacht</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="PhoneNumber" type="PhoneNumberType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Telefoonnummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="MobilePhoneNumber" type="PhoneNumberType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Mobiel telefoonnummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="FaxNumber" type="PhoneNumberType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>Faxnummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="EmailAddress" type="EmailAddressType" minOccurs="0" nillable="true" rse:CanAutoTrim="true" rse:CanIgnore="true">
+				<xs:annotation>
+					<xs:documentation>E-mailadres</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="AddressList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Address" minOccurs="0" maxOccurs="unbounded" nillable="true">
+							<xs:complexType>
+								<xs:complexContent mixed="false">
+									<xs:extension base="AddressType">
+										<xs:attribute name="Type" use="required">
+											<xs:simpleType>
+												<xs:annotation>
+													<xs:documentation>Soort</xs:documentation>
+												</xs:annotation>
+
+												<xs:restriction base="AddressTypeType">
+													<xs:enumeration value="Office">
+														<xs:annotation>
+															<xs:documentation>Vestigingsadres</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+													<xs:enumeration value="Delivery">
+														<xs:annotation>
+															<xs:documentation>Afleveradres</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+				<xs:unique name="UniquePersonAddressList">
+					<xs:selector xpath="rlz:Address" />
+					<xs:field xpath="@Type" />
+				</xs:unique>
+			</xs:element>
+			
+			<xs:element name="Login" type="LoginType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Login gegevens</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="CategoryList" type="CategoryListType" minOccurs="0">
+				<xs:key name="PersonKeyCategoryListID">
+					<xs:selector xpath="rlz:Category" />
+					<xs:field xpath="@Name|@InternalRlzID" />
+				</xs:key>
+			</xs:element>
+
+			<xs:group ref="PermissionsGroup" minOccurs="0" />
+
+			<xs:element name="RelationList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence minOccurs="0" maxOccurs="unbounded">
+
+						<xs:element name="CustomerReference" nillable="true" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Klant referentie</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="CustomerReferenceType">
+										<xs:attribute name="Type" use="required">
+											<xs:annotation>
+												<xs:documentation>Soort relatie</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:token">
+													<xs:enumeration value="IsContactOf">
+														<xs:annotation>
+															<xs:documentation>Contactpersoon</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+
+						<xs:element name="VendorReference" nillable="true" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Leverancier referentie</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="VendorReferenceType">
+										<xs:attribute name="Type" use="required">
+											<xs:annotation>
+												<xs:documentation>Soort relatie</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:token">
+													<xs:enumeration value="IsContactOf">
+														<xs:annotation>
+															<xs:documentation>Contactpersoon</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+
+						<xs:element name="ContactPersonReference" nillable="true" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Contactpersoon referentie</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="ContactPersonReferenceType">
+										<xs:attribute name="Type" use="required">
+											<xs:annotation>
+												<xs:documentation>Soort relatie</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:token">
+													<xs:enumeration value="IsAuthorizedPersonOf">
+														<xs:annotation>
+															<xs:documentation>Familie relatie</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+
+													<xs:enumeration value="HasAuthorizedPerson">
+														<xs:annotation>
+															<xs:documentation>Familie relatie</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+
+													<xs:enumeration value="IsColleagueOf">
+														<xs:annotation>
+															<xs:documentation>Collega</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+
+													<xs:enumeration value="HasColleague">
+														<xs:annotation>
+															<xs:documentation>Collega</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+													
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+
+
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		
+		<xs:attribute name="ID" type="xs:positiveInteger" use="optional">
+			<xs:annotation>
+				<xs:documentation>Person id -> herkenning van bestaande / nieuwe persoon</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		
+		<xs:attribute name="SocialSecurityNumber" type="SocialSecurityNumberType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Social security number -> herkenning van bestaande / nieuwe persoon</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+
+		<xs:attribute name="Code" type="PersonCodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Person code -> herkenning van bestaande / nieuwe persoon</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		
+		<xs:attribute name="InternalRlzID" type="ReeleezeeIdType" use="optional">
+			<xs:annotation>
+				<xs:documentation>DO NOT USE !</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	
+	<xs:complexType name="LoginType">
+		<xs:sequence>
+			<xs:element name="Reeleezee" type="ReeleezeeLoginType" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Reeleezee Login</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Pass" type="PassLoginType" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>PASS Login</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Unit4Webber" type="Unit4WebberLoginType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Unit4 Webber Login</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Docproof" type="DocproofLoginType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Docproof Login</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ReeleezeeLoginType">
+		<xs:sequence>
+			<xs:element name="LoginName" type="ReeleezeeUsernameType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Gebruikersnaam in Reeleezee</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Password" type="ReeleezeePasswordType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wachtwoord in Reeleezee</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="PassLoginType">
+		<xs:sequence>
+			<xs:element name="UserID" type="TrimmedNonEmptyStringType" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Gebruikerscode in PASS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		
+			<xs:element name="Signup" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Aanmelden voor PASS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="SendOTP" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>OTP token opsturen</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="Unit4WebberLoginType">
+		<xs:sequence>
+			<xs:element name="Signup" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Aanmelden voor Unit4 Webber</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="LoginName" type="TrimmedNonEmptyStringType" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Gebruikersnaam in Unit4 Webber</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="DocproofLoginType">
+		<xs:sequence>
+			<xs:element name="Signup" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Aanmelden voor Docproof</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="LoginName" type="TrimmedNonEmptyStringType" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Gebruikersnaam in Docproof</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="OpeningbalanceType">
+		<xs:sequence>
+			<xs:element name="Amount" type="PriceType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Bedrag</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Reference" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Referentie</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="64" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

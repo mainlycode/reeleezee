@@ -1,0 +1,100 @@
+MainlyCode\Reeleezee\ValueObject\CustomerType\FiscalIdentificationsAType:
+    properties:
+        fiscalIdentification:
+            expose: true
+            access_type: public_method
+            serialized_name: FiscalIdentification
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getFiscalIdentification
+                setter: setFiscalIdentification
+            xml_list:
+                inline: true
+                entry_name: FiscalIdentification
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            type: array<MainlyCode\Reeleezee\ValueObject\CustomerType\FiscalIdentificationsAType\FiscalIdentificationAType>
+        vatReturn:
+            expose: true
+            access_type: public_method
+            serialized_name: VatReturn
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getVatReturn
+                setter: setVatReturn
+            xml_list:
+                inline: true
+                entry_name: VatReturn
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            type: array<MainlyCode\Reeleezee\ValueObject\CustomerType\FiscalIdentificationsAType\VatReturnAType>
+        salaryTax:
+            expose: true
+            access_type: public_method
+            serialized_name: SalaryTax
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getSalaryTax
+                setter: setSalaryTax
+            xml_list:
+                inline: true
+                entry_name: SalaryTax
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            type: array<MainlyCode\Reeleezee\ValueObject\CustomerType\FiscalIdentificationsAType\SalaryTaxAType>
+        intracommunitySupplies:
+            expose: true
+            access_type: public_method
+            serialized_name: IntracommunitySupplies
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getIntracommunitySupplies
+                setter: setIntracommunitySupplies
+            xml_list:
+                inline: true
+                entry_name: IntracommunitySupplies
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            type: array<MainlyCode\Reeleezee\ValueObject\CustomerType\FiscalIdentificationsAType\IntracommunitySuppliesAType>
+        intracommunityPerformance:
+            expose: true
+            access_type: public_method
+            serialized_name: IntracommunityPerformance
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getIntracommunityPerformance
+                setter: setIntracommunityPerformance
+            xml_list:
+                inline: true
+                entry_name: IntracommunityPerformance
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            type: array<MainlyCode\Reeleezee\ValueObject\CustomerType\FiscalIdentificationsAType\IntracommunityPerformanceAType>
+        shortCorporateIncomeTax:
+            expose: true
+            access_type: public_method
+            serialized_name: ShortCorporateIncomeTax
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getShortCorporateIncomeTax
+                setter: setShortCorporateIncomeTax
+            xml_list:
+                inline: true
+                entry_name: ShortCorporateIncomeTax
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            type: array<MainlyCode\Reeleezee\ValueObject\CustomerType\FiscalIdentificationsAType\ShortCorporateIncomeTaxAType>
+        corporateIncomeTax:
+            expose: true
+            access_type: public_method
+            serialized_name: CorporateIncomeTax
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getCorporateIncomeTax
+                setter: setCorporateIncomeTax
+            xml_list:
+                inline: true
+                entry_name: CorporateIncomeTax
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            type: array<MainlyCode\Reeleezee\ValueObject\CustomerType\FiscalIdentificationsAType\CorporateIncomeTaxAType>

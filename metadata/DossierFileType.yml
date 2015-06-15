@@ -1,0 +1,242 @@
+MainlyCode\Reeleezee\ValueObject\DossierFileType:
+    properties:
+        path:
+            expose: true
+            access_type: public_method
+            serialized_name: Path
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getPath
+                setter: setPath
+            type: string
+        fileName:
+            expose: true
+            access_type: public_method
+            serialized_name: FileName
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getFileName
+                setter: setFileName
+            type: string
+        sourceFileLocation:
+            expose: true
+            access_type: public_method
+            serialized_name: SourceFileLocation
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getSourceFileLocation
+                setter: setSourceFileLocation
+            type: string
+        sourceFileContent:
+            expose: true
+            access_type: public_method
+            serialized_name: SourceFileContent
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getSourceFileContent
+                setter: setSourceFileContent
+            type: MainlyCode\Reeleezee\ValueObject\DossierFileType\SourceFileContentAType
+        dossier:
+            expose: true
+            access_type: public_method
+            serialized_name: Dossier
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDossier
+                setter: setDossier
+            type: MainlyCode\Reeleezee\ValueObject\DossierFileType\DossierAType
+        owner:
+            expose: true
+            access_type: public_method
+            serialized_name: Owner
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getOwner
+                setter: setOwner
+            type: MainlyCode\Reeleezee\ValueObject\DossierFileType\OwnerAType
+        sharing:
+            expose: true
+            access_type: public_method
+            serialized_name: Sharing
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getSharing
+                setter: setSharing
+            type: string
+        externalReference:
+            expose: true
+            access_type: public_method
+            serialized_name: ExternalReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getExternalReference
+                setter: setExternalReference
+            type: string
+        reference:
+            expose: true
+            access_type: public_method
+            serialized_name: Reference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getReference
+                setter: setReference
+            type: string
+        lastModifiedDate:
+            expose: true
+            access_type: public_method
+            serialized_name: LastModifiedDate
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getLastModifiedDate
+                setter: setLastModifiedDate
+            type: Goetas\Xsd\XsdToPhp\XMLSchema\DateTime
+        transactionDate:
+            expose: true
+            access_type: public_method
+            serialized_name: TransactionDate
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getTransactionDate
+                setter: setTransactionDate
+            type: 'DateTime<''Y-m-d''>'
+        language:
+            expose: true
+            access_type: public_method
+            serialized_name: Language
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getLanguage
+                setter: setLanguage
+            type: string
+        bookYear:
+            expose: true
+            access_type: public_method
+            serialized_name: BookYear
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getBookYear
+                setter: setBookYear
+            type: integer
+        documentReference:
+            expose: true
+            access_type: public_method
+            serialized_name: DocumentReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDocumentReference
+                setter: setDocumentReference
+            type: string
+        accountReference:
+            expose: true
+            access_type: public_method
+            serialized_name: AccountReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getAccountReference
+                setter: setAccountReference
+            type: MainlyCode\Reeleezee\ValueObject\DossierFileType\AccountReferenceAType
+        productReference:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getProductReference
+                setter: setProductReference
+            type: MainlyCode\Reeleezee\ValueObject\DossierFileType\ProductReferenceAType
+        employeeReference:
+            expose: true
+            access_type: public_method
+            serialized_name: EmployeeReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getEmployeeReference
+                setter: setEmployeeReference
+            type: MainlyCode\Reeleezee\ValueObject\DossierFileType\EmployeeReferenceAType
+        departmentReference:
+            expose: true
+            access_type: public_method
+            serialized_name: DepartmentReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDepartmentReference
+                setter: setDepartmentReference
+            type: MainlyCode\Reeleezee\ValueObject\DossierFileType\DepartmentReferenceAType
+        projectReference:
+            expose: true
+            access_type: public_method
+            serialized_name: ProjectReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getProjectReference
+                setter: setProjectReference
+            type: MainlyCode\Reeleezee\ValueObject\DossierFileType\ProjectReferenceAType
+        tags:
+            expose: true
+            access_type: public_method
+            serialized_name: Tags
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getTags
+                setter: setTags
+            type: string
+        comment:
+            expose: true
+            access_type: public_method
+            serialized_name: Comment
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getComment
+                setter: setComment
+            type: string
+        authors:
+            expose: true
+            access_type: public_method
+            serialized_name: Authors
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getAuthors
+                setter: setAuthors
+            type: string
+        signerList:
+            expose: true
+            access_type: public_method
+            serialized_name: SignerList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getSignerList
+                setter: setSignerList
+            type: MainlyCode\Reeleezee\ValueObject\DossierFileType\SignerListAType
+        workflowReference:
+            expose: true
+            access_type: public_method
+            serialized_name: WorkflowReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getWorkflowReference
+                setter: setWorkflowReference
+            type: MainlyCode\Reeleezee\ValueObject\DossierFileType\WorkflowReferenceAType

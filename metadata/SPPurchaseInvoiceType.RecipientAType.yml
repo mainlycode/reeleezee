@@ -1,0 +1,42 @@
+MainlyCode\Reeleezee\ValueObject\SPPurchaseInvoiceType\RecipientAType:
+    properties:
+        fullName:
+            expose: true
+            access_type: public_method
+            serialized_name: FullName
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getFullName
+                setter: setFullName
+            type: string
+        zipcode:
+            expose: true
+            access_type: public_method
+            serialized_name: Zipcode
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getZipcode
+                setter: setZipcode
+            type: string
+        mailboxNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: MailboxNumber
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getMailboxNumber
+                setter: setMailboxNumber
+            type: integer
+        reeleezeeID:
+            expose: true
+            access_type: public_method
+            serialized_name: ReeleezeeID
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getReeleezeeID
+                setter: setReeleezeeID
+            type: string

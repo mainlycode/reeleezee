@@ -1,0 +1,42 @@
+MainlyCode\Reeleezee\ValueObject\DossierFileType\DossierAType:
+    properties:
+        customerReference:
+            expose: true
+            access_type: public_method
+            serialized_name: CustomerReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getCustomerReference
+                setter: setCustomerReference
+            type: MainlyCode\Reeleezee\ValueObject\DossierFileType\DossierAType\CustomerReferenceAType
+        contactPersonReference:
+            expose: true
+            access_type: public_method
+            serialized_name: ContactPersonReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getContactPersonReference
+                setter: setContactPersonReference
+            type: MainlyCode\Reeleezee\ValueObject\DossierFileType\DossierAType\ContactPersonReferenceAType
+        employeeReference:
+            expose: true
+            access_type: public_method
+            serialized_name: EmployeeReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getEmployeeReference
+                setter: setEmployeeReference
+            type: MainlyCode\Reeleezee\ValueObject\DossierFileType\DossierAType\EmployeeReferenceAType
+        administrationReference:
+            expose: true
+            access_type: public_method
+            serialized_name: AdministrationReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getAdministrationReference
+                setter: setAdministrationReference
+            type: \AnyType

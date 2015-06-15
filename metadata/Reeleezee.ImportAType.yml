@@ -1,0 +1,38 @@
+MainlyCode\Reeleezee\ValueObject\Reeleezee\ImportAType:
+    properties:
+        autoIgnoreEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: AutoIgnoreEnabled
+            accessor:
+                getter: getAutoIgnoreEnabled
+                setter: setAutoIgnoreEnabled
+            xml_attribute: true
+            type: boolean
+        autoTrimEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: AutoTrimEnabled
+            accessor:
+                getter: getAutoTrimEnabled
+                setter: setAutoTrimEnabled
+            xml_attribute: true
+            type: boolean
+        autoTruncateEnabled:
+            expose: true
+            access_type: public_method
+            serialized_name: AutoTruncateEnabled
+            accessor:
+                getter: getAutoTruncateEnabled
+                setter: setAutoTruncateEnabled
+            xml_attribute: true
+            type: boolean
+        recoveryHandling:
+            expose: true
+            access_type: public_method
+            serialized_name: RecoveryHandling
+            accessor:
+                getter: getRecoveryHandling
+                setter: setRecoveryHandling
+            xml_attribute: true
+            type: string

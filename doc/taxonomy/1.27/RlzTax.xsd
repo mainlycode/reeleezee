@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--  Intellectual Property Reeleezee B.V.  -->
+<!--  Version Reeleezee Tax Version 1.27  -->
+<!--  Released by Reeleezee B.V. www.reeleezee.nl  -->
+
+<xs:schema
+	id="ReeleezeeTax"
+	version="1.27"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:rse="https://portal.reeleezee.nl/taxonomy/1.27/schemaExtentions"
+	xsi:schemaLocation="https://portal.reeleezee.nl/taxonomy/1.27/schemaExtentions SchemaExtentions.xsd" 
+	elementFormDefault="qualified">
+	
+	<xs:include schemaLocation="RlzBaseStructures.xsd" />
+	<xs:include schemaLocation="RlzBaseTypes.xsd" />
+	<xs:include schemaLocation="RlzBaseEnums.xsd" />
+	
+	
+	<!-- definition of complex elements -->
+	
+	<xs:complexType name="CustomerTaxDepositListType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="CustomerTaxDeposit" type="CustomerTaxDepositType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	
+	<xs:complexType name="CustomerTaxDepositType">
+		<xs:sequence>
+			<xs:choice>
+				<xs:group ref="CustomerReferenceGroup" minOccurs="1" />
+				<xs:group ref="ContactPersonReferenceGroup" minOccurs="1" />
+			</xs:choice>
+
+			<xs:element name="Type" type="TaxDepositType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Type</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="Number" type="NonEmptyStringType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Nummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="Year" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Jaar</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="2000" />
+						<xs:maxInclusive value="2030" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="Period" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Periode</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="0" />
+						<xs:maxInclusive value="1000" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="ExpireDate" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation>Verloop datum</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="Status" type="TaxDepositStatusType">
+				<xs:annotation>
+					<xs:documentation>Status</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--  Intellectual Property Reeleezee B.V.  -->
+<!--  Version Reeleezee PurchaseInvoice Version 1.27  -->
+<!--  Released by Reeleezee B.V. www.reeleezee.nl  -->
+
+<xs:schema 
+	id="ReeleezeePurchaseInvoice"
+	version="1.27"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns:rlz="https://portal.reeleezee.nl/taxonomy/1.27"
+	elementFormDefault="qualified">
+	
+	<xs:include schemaLocation="RlzBaseStructures.xsd" />
+	<xs:include schemaLocation="RlzBaseTypes.xsd" />
+	<xs:include schemaLocation="RlzBaseEnums.xsd" />
+
+	<!-- definition of complex elements -->
+	
+	<xs:complexType name="SP_PurchaseInvoiceListType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="PurchaseInvoice" type="SP_PurchaseInvoiceType">
+				<xs:annotation>
+					<xs:documentation>Inkoopfactuur</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+
+	<xs:complexType name="SP_PurchaseInvoiceType">
+		<xs:sequence>
+			<xs:element name="Sender" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Zender</xs:documentation>
+				</xs:annotation>
+				
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="FullName" type="NonEmptyStringType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Naam</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						
+						<xs:element name="Street" type="NonEmptyStringType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Straatnaam</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						
+						<xs:element name="Number" type="NonEmptyStringType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Huisnummer + Huisnummer toevoeging</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						
+						<xs:element name="Zipcode" type="NonEmptyStringType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Postcode</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						
+						<xs:element name="City" type="NonEmptyStringType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Woonplaats</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						
+						<xs:element name="CountryCode" type="ISOCountryCode" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Landcode</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						
+						
+						<xs:element name="PhoneNumber" type="NonEmptyStringType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Telefoonnummer</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						
+						<xs:element name="FaxNumber" type="NonEmptyStringType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Faxnummer</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						
+						<xs:element name="EmailAddress" type="NonEmptyStringType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>E-mailadres</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						
+						<xs:element name="ChamberOfCommerceNumber" type="ChamberOfCommerceNumberType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>KvK nummer</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						
+						<xs:element name="TaxDepositOBNumber" type="NonEmptyStringType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Aangiftenummer OB</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						
+						<xs:element name="BankName" type="NonEmptyStringType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Banknaam</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						
+						<xs:element name="BankAccountNumber" type="NonEmptyStringType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Bankrekeningnummer</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+
+						<xs:element name="InternationalBankAccountNumber" type="NonEmptyStringType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>IBAN</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						
+					</xs:sequence>
+					
+				</xs:complexType>
+			</xs:element>
+			
+			<xs:element name="Recipient" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Ontvanger</xs:documentation>
+				</xs:annotation>
+				
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="FullName" type="NonEmptyStringType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Naam</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						
+						<xs:element name="Zipcode" type="NonEmptyStringType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Postcode</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						
+						<xs:element name="MailboxNumber" type="xs:positiveInteger" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Postbus nummer</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						
+						<xs:element name="ReeleezeeID" type="NonEmptyStringType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>ReeleezeeID</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			
+			<xs:element name="Number" type="NonEmptyStringType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Nummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Reference" type="NonEmptyStringType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Betreft</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="DocumentDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Document datum</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="PaymentDueDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Datum betalingstermijn verstreken</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="GrossAmount" type="PriceType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Bruto bedrag</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="NetAmount" type="PriceType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Netto bedrag</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="VatAmount" type="PriceType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>BTW bedrag</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="VatPercentageList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="VatPercentage">
+							<xs:annotation>
+								<xs:documentation>BTW percentage</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:double">
+									<xs:minInclusive value="0" />
+									<xs:maxExclusive value="100" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			
+			
+			<xs:element name="FileNameScan" type="NonEmptyStringType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Bestandsnaam ingescand document</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+</xs:schema>

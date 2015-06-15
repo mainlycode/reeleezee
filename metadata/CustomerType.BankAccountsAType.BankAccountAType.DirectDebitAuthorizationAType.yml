@@ -1,0 +1,52 @@
+MainlyCode\Reeleezee\ValueObject\CustomerType\BankAccountsAType\BankAccountAType\DirectDebitAuthorizationAType:
+    properties:
+        paymentAccountReference:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentAccountReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getPaymentAccountReference
+                setter: setPaymentAccountReference
+            type: MainlyCode\Reeleezee\ValueObject\CustomerType\BankAccountsAType\BankAccountAType\DirectDebitAuthorizationAType\PaymentAccountReferenceAType
+        signatureDate:
+            expose: true
+            access_type: public_method
+            serialized_name: SignatureDate
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getSignatureDate
+                setter: setSignatureDate
+            type: 'DateTime<''Y-m-d''>'
+        type:
+            expose: true
+            access_type: public_method
+            serialized_name: Type
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getType
+                setter: setType
+            type: string
+        mandateID:
+            expose: true
+            access_type: public_method
+            serialized_name: MandateID
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getMandateID
+                setter: setMandateID
+            type: string
+        maxAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxAmount
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getMaxAmount
+                setter: setMaxAmount
+            type: float

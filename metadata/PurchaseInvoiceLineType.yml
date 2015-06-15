@@ -1,0 +1,132 @@
+MainlyCode\Reeleezee\ValueObject\PurchaseInvoiceLineType:
+    properties:
+        date:
+            expose: true
+            access_type: public_method
+            serialized_name: Date
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDate
+                setter: setDate
+            type: 'DateTime<''Y-m-d''>'
+        description:
+            expose: true
+            access_type: public_method
+            serialized_name: Description
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDescription
+                setter: setDescription
+            type: string
+        quantity:
+            expose: true
+            access_type: public_method
+            serialized_name: Quantity
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getQuantity
+                setter: setQuantity
+            type: float
+        unit:
+            expose: true
+            access_type: public_method
+            serialized_name: Unit
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getUnit
+                setter: setUnit
+            type: string
+        productReference:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getProductReference
+                setter: setProductReference
+            type: MainlyCode\Reeleezee\ValueObject\PurchaseInvoiceLineType\ProductReferenceAType
+        productCode:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductCode
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getProductCode
+                setter: setProductCode
+            type: string
+        price:
+            expose: true
+            access_type: public_method
+            serialized_name: Price
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getPrice
+                setter: setPrice
+            type: float
+        vatAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: VatAmount
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getVatAmount
+                setter: setVatAmount
+            type: float
+        vatCode:
+            expose: true
+            access_type: public_method
+            serialized_name: VatCode
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getVatCode
+                setter: setVatCode
+            type: string
+        accountReference:
+            expose: true
+            access_type: public_method
+            serialized_name: AccountReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getAccountReference
+                setter: setAccountReference
+            type: MainlyCode\Reeleezee\ValueObject\PurchaseInvoiceLineType\AccountReferenceAType
+        employeeReference:
+            expose: true
+            access_type: public_method
+            serialized_name: EmployeeReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getEmployeeReference
+                setter: setEmployeeReference
+            type: MainlyCode\Reeleezee\ValueObject\PurchaseInvoiceLineType\EmployeeReferenceAType
+        departmentReference:
+            expose: true
+            access_type: public_method
+            serialized_name: DepartmentReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDepartmentReference
+                setter: setDepartmentReference
+            type: MainlyCode\Reeleezee\ValueObject\PurchaseInvoiceLineType\DepartmentReferenceAType
+        projectReference:
+            expose: true
+            access_type: public_method
+            serialized_name: ProjectReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getProjectReference
+                setter: setProjectReference
+            type: MainlyCode\Reeleezee\ValueObject\PurchaseInvoiceLineType\ProjectReferenceAType

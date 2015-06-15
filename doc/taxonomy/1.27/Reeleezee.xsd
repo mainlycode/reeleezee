@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+	_____________________________________________________________________________________________________________
+	Intellectual Property Reeleezee B.V.
+	Reeleezee Version 1.27
+	Released by Reeleezee B.V. www.reeleezee.nl
+	_____________________________________________________________________________________________________________
+
+
+	History log
+	_____________________________________________________________________________________________________________
+	# = comment
+	+ = new feature
+	* = improved feature
+	! = fixed bug
+	- = removed feature
+	
+		_____________________________________________________________________________________________________________
+	Version 1.27
+	+ Added DossierFile/WorkflowReference
+
+	_____________________________________________________________________________________________________________
+	Version 1.26
+	+ Added Customer/BankAccounts/BankAccount/DirectDebitAuthorization
+	+ Added Customer/DefaultInvoiceSendMethod
+	* Increased length of BankAccount/BBAN and BankAccount/IBAN
+	* Changed namespace to reflect the physical location of the schema
+	* Increased street name length to 50
+	* Increased e-mail length to 200
+	* Increased website url length to 200
+	- Removed the version attribute
+	_____________________________________________________________________________________________________________
+	Version 1.24
+	+ Added DossierFile/SignerList
+	
+	_____________________________________________________________________________________________________________
+	Version 1.23
+	+ Added RelationList to all entities
+	+ Added support for foreign fiscal numbers
+	+ Added CustomerTaxDepositList
+	
+	_____________________________________________________________________________________________________________
+	Version 1.22
+	+ Added Import/@RecoveryHandling to determine how already deleted objects are handled
+	+ Added new VAT rates
+	
+	_____________________________________________________________________________________________________________
+	Version 1.21
+	+ Added extensions for mapping from excel
+	+ Added salesinvoice/DocumentOrigin
+
+	_____________________________________________________________________________________________________________
+	Version 1.20
+	+ Added Dossier for contactperson
+
+	_____________________________________________________________________________________________________________
+	Version 1.19
+	+ Added Customer/Department
+	+ Added Employee/Department
+	
+	_____________________________________________________________________________________________________________
+	Version 1.18
+	+ Added ability to remove all categories
+	+ Added ability to remove all accountmanager references
+	* Improved trim/truncate/ignore handling
+	
+	_____________________________________________________________________________________________________________
+	Version 1.17
+	+ Added new product elements for cashregister
+	+ Added Person/Initials
+	+ Added Employee
+	+ Added MobilePhoneNumber for Customer, Vendor and Person
+	+ Added Customer/CategoryList
+	+ Added Customer/AccountManagerList
+	+ Added Customer/EntityType
+	+ Added Customer/PaymentAccountReference
+	+ Added Customer/PaymentMethodReferenceGroup
+	+ Added SalesInvoice/PaymentAccountReference
+	+ Added SalesInvoice/PaymentMethodReferenceGroup
+	+ Added Permissions on Person
+	+ Added DossierFile/Dossier/AdministrationReference to access accountant's own dossier
+	* Changed fiscal numbers on Customer to Customer/FiscalIdentifications which can handle more numbers of the same type
+	* Less restrictions on SocialSecurityNumber
+
+	_____________________________________________________________________________________________________________
+	Version 1.16
+	+ Added new VAT codes for ICP
+	
+	_____________________________________________________________________________________________________________
+	Version 1.15
+	* Person/SearchName is no longer required, but will be automatically filled in case of a new person
+	* Further improved the references
+	- Removed PurchaseInvoice/VatList
+	
+	_____________________________________________________________________________________________________________
+	Version 1.14
+	+ Added Dossier
+	+ New method to reference from documents to products, employees, ...
+	* Increased the length of DossierFile/Reference from 20 to 50
+	+ Added DossierFile/Authors
+	* Customer/FullName and Customer/SearchName are no longer required, but will be automatically filled in case of a new customer
+	+ Added Customer/@Code
+	* Less strict control of phone number
+	* Less strict control of e-mail address
+	
+	_____________________________________________________________________________________________________________
+	Version 1.13
+	+ Added ScanPost
+
+	_____________________________________________________________________________________________________________
+	Version 1.12
+	+ Added Account to the import
+	+ Added Product to the import
+	+ Added Vendor to the import
+	+ Added PurchaseInvoice to the import
+	+ Added ManualJournal to the import
+	* Changed the validation of e-mail addresses. Some valid addresses were falsely invalidated
+	* Productcode may no longer start or end with a space
+	* Limited the precision of prices
+	* Stricter handling of tax deposit number types
+	* Stricter handling of names: they must be trimmed
+	* Changed Customer/AddressForBilling to Customer/DefaultAddress
+	* Values which should be trimmed can be automatically trimmed by setting
+	  the AutoTrimEnabled attribute to true
+	* Several optional values can be ignored when they are invalid by setting
+	  the IgnoreInvalidValuesWhenOptional to true
+	* Several values can be automatically truncated when exceeding the maximum length by setting
+	  the AutoTruncateEnabled attribute to true
+	* Several small improvements
+	* Namespace changed to http://www.reeleezee.nl/taxonomy/1.12
+	  Schema location: taxonomy/1.12/Reeleezee.xsd
+	_____________________________________________________________________________________________________________
+	Version 1.11
+	+ Added SalesInvoices to the import.
+	* ISO languages are now limited to the supported ones (en, nl, de, es, de)
+	* Namespace changed to http://www.reeleezee.nl/taxonomy/1.11
+	  Schema location: taxonomy/1.11/Reeleezee.xsd
+	_____________________________________________________________________________________________________________
+	Version 1.10
+	+ The main element must now include a version.
+	* The schema now starts with the "Reeleezee" element and in case of an import followed by the "Import" element.
+	* Moved the primairy keys from elements to attributes. It is now possible to change a primairy key by setting
+	  the element.
+	* Better restrictions, mainly for the primairy keys.
+	* Changed the structure in //Customer/ContactPersonList. If now contains a list of "ContactPerson" elements
+	  with one of the following attributes: SocialSecurityNumber or ID
+	* Namespace changed to http://www.reeleezee.nl/taxonomy/1.10
+	  Schema location: taxonomy/1.10/Reeleezee.xsd
+	
+	_____________________________________________________________________________________________________________
+	Version 1.01
+	+ Added fax number for a customer
+	+ Added fax number for a person
+	+ Most elements are nillable now. An element which is set to nil (xsi:nil="true") will be cleared or removed.
+	  An element which is ommited will be left alone or in case of an new instance will be set to it's default.
+	+ Added a second primairy key for person: ID. A person can now be identified by a SocialSecurityNumber OR an
+	  ID, not both at the same time.
+	+ Added element UserID on //Person/Login/Pass for linking a Diginotar PASS account with a Reeleezee login.
+	* Elements must now appear in the specified order. This is necessary when using xsd's extended features.
+	* Primairy key of a customer can be ommited in which case it is always created. Warning: multiple imports of
+	  the same file will each time result in a new customer.
+	* Namespace changed to http://www.reeleezee.nl/taxonomy/1.01
+	  Schema location: taxonomy/1.01/RlzCustomerImport.xsd
+	
+	_____________________________________________________________________________________________________________
+	Version 1.00 (Not supported anymore)
+	+ Initial realease
+	
+	_____________________________________________________________________________________________________________
+-->
+
+<xs:schema 
+	id="Reeleezee"
+	version="1.27"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns:rlz="https://portal.reeleezee.nl/taxonomy/1.27"
+	elementFormDefault="qualified">
+	
+	<xs:include schemaLocation="RlzRelation.xsd" />
+	<xs:include schemaLocation="RlzSalesInvoice.xsd" />
+	<xs:include schemaLocation="RlzPurchaseInvoice.xsd" />
+	<xs:include schemaLocation="RlzManualJournal.xsd" />
+	<xs:include schemaLocation="RlzProduct.xsd" />
+	<xs:include schemaLocation="RlzAccount.xsd" />
+	<xs:include schemaLocation="RlzScanPost.xsd" />
+	<xs:include schemaLocation="RlzDossier.xsd" />
+	<xs:include schemaLocation="RlzTax.xsd" />
+
+	
+	<!-- definition of top-level element -->
+	<xs:element name="Reeleezee">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="Import" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Te importeren in Reeleezee</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="ImportOrExportType">
+								<xs:attribute name="AutoIgnoreEnabled" type="xs:boolean" use="optional" default="false">
+									<xs:annotation>
+										<xs:documentation>Optionele waarden negeren als ze ongeldig zijn</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								
+								<xs:attribute name="AutoTrimEnabled" type="xs:boolean" use="optional" default="false">
+									<xs:annotation>
+										<xs:documentation>Optionele waarden negeren als ze ongeldig zijn</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								
+								<xs:attribute name="AutoTruncateEnabled" type="xs:boolean" use="optional" default="false">
+									<xs:annotation>
+										<xs:documentation>Waarden inkorten als ze te lang zijn</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+
+								<xs:attribute name="RecoveryHandling" type="rlz:RecoveryHandlingType" use="optional" default="Reject">
+									<xs:annotation>
+										<xs:documentation>Afhandeling van inactieve objecten</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+
+								
+							</xs:extension>
+							
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				
+				<xs:element name="ImportResult" type="ImportResultType" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Resultaat van de import</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				
+				<xs:element name="Export" type="ImportOrExportType" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Geëxporteerd uit Reeleezee</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				
+				<xs:element name="ScanPost" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>ScanPost</xs:documentation>
+					</xs:annotation>
+					
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ExportInfo" type="ExportInfoType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Informatie over de export</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							
+							<xs:element name="PurchaseInvoiceList" type="SP_PurchaseInvoiceListType" minOccurs="0">
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="ImportOrExportType">
+		<xs:sequence>
+			<xs:element name="ExportInfo" type="ExportInfoType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Informatie over de export</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="CustomerList" type="CustomerListType" minOccurs="0">
+				<xs:unique name="UniqueCustomerListID">
+					<xs:selector xpath="rlz:Customer" />
+					<xs:field xpath="@ID|@Code|@InternalRlzID" />
+				</xs:unique>
+			</xs:element>
+			
+			<xs:element name="VendorList" type="VendorListType" minOccurs="0">
+				<xs:unique name="UniqueVendorListID">
+					<xs:selector xpath="rlz:Vendor" />
+					<xs:field xpath="@ID|@Code|@InternalRlzID" />
+				</xs:unique>
+			</xs:element>
+
+			<xs:element name="EmployeeList" type="EmployeeListType" minOccurs="0">
+				<xs:unique name="UniqueEmployeeListID">
+					<xs:selector xpath="rlz:Employee" />
+					<xs:field xpath="@ID|@Code|@InternalRlzID" />
+				</xs:unique>
+			</xs:element>
+			
+			<xs:element name="PersonList" type="PersonListType" minOccurs="0">
+				<xs:unique name="UniquePersonList1">
+					<xs:selector xpath="rlz:Person" />
+					<xs:field xpath="@ID" />
+				</xs:unique>
+				<xs:unique name="UniquePersonList2">
+					<xs:selector xpath="rlz:Person" />
+					<xs:field xpath="@Code" />
+				</xs:unique>
+				<xs:unique name="UniquePersonList3">
+					<xs:selector xpath="rlz:Person" />
+					<xs:field xpath="@SocialSecurityNumber" />
+				</xs:unique>
+				<xs:unique name="UniquePersonList4">
+					<xs:selector xpath="rlz:Person" />
+					<xs:field xpath="@InternalRlzID" />
+				</xs:unique>
+			</xs:element>
+			
+			<xs:element name="SalesInvoiceList" type="SalesInvoiceListType" minOccurs="0">
+				<xs:unique name="UniqueSalesInvoiceListReferenceNumber">
+					<xs:selector xpath="rlz:SalesInvoice" />
+					<xs:field xpath="@ReferenceNumber|@InternalRlzID" />
+				</xs:unique>
+			</xs:element>
+			
+			
+			<xs:element name="PurchaseInvoiceList" type="PurchaseInvoiceListType" minOccurs="0">
+				<xs:unique name="UniquePurchaseInvoiceListReference">
+					<xs:selector xpath="rlz:PurchaseInvoice" />
+					<xs:field xpath="@Reference|@InternalRlzID" />
+				</xs:unique>
+			</xs:element>
+			
+			<xs:element name="ManualJournalList" type="ManualJournalListType" minOccurs="0">
+				<xs:unique name="UniqueManualJournalListReference">
+					<xs:selector xpath="rlz:ManualJournal" />
+					<xs:field xpath="@Reference|@InternalRlzID" />
+				</xs:unique>
+			</xs:element>
+			
+			<xs:element name="ProductList" type="ProductListType" minOccurs="0">
+				<xs:unique name="UniqueProductCode">
+					<xs:selector xpath="rlz:Product" />
+					<xs:field xpath="@Code|@InternalRlzID" />
+				</xs:unique>
+			</xs:element>
+
+			<xs:element name="AccountList" type="AccountListType" minOccurs="0">
+				<xs:key name="UniqueAccountNumber">
+					<xs:selector xpath="rlz:Account" />
+					<xs:field xpath="@Number" />
+				</xs:key>
+			</xs:element>
+			
+			<xs:element name="DossierFileList" type="DossierFileListType" minOccurs="0">
+			</xs:element>
+
+			<xs:element name="CustomerTaxDepositList" type="CustomerTaxDepositListType" minOccurs="0">
+			</xs:element>
+			
+			
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

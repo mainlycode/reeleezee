@@ -1,0 +1,116 @@
+MainlyCode\Reeleezee\ValueObject\SPPurchaseInvoiceType:
+    properties:
+        sender:
+            expose: true
+            access_type: public_method
+            serialized_name: Sender
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getSender
+                setter: setSender
+            type: MainlyCode\Reeleezee\ValueObject\SPPurchaseInvoiceType\SenderAType
+        recipient:
+            expose: true
+            access_type: public_method
+            serialized_name: Recipient
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getRecipient
+                setter: setRecipient
+            type: MainlyCode\Reeleezee\ValueObject\SPPurchaseInvoiceType\RecipientAType
+        number:
+            expose: true
+            access_type: public_method
+            serialized_name: Number
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getNumber
+                setter: setNumber
+            type: string
+        reference:
+            expose: true
+            access_type: public_method
+            serialized_name: Reference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getReference
+                setter: setReference
+            type: string
+        documentDate:
+            expose: true
+            access_type: public_method
+            serialized_name: DocumentDate
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDocumentDate
+                setter: setDocumentDate
+            type: 'DateTime<''Y-m-d''>'
+        paymentDueDate:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentDueDate
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getPaymentDueDate
+                setter: setPaymentDueDate
+            type: 'DateTime<''Y-m-d''>'
+        grossAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: GrossAmount
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getGrossAmount
+                setter: setGrossAmount
+            type: float
+        netAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: NetAmount
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getNetAmount
+                setter: setNetAmount
+            type: float
+        vatAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: VatAmount
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getVatAmount
+                setter: setVatAmount
+            type: float
+        vatPercentageList:
+            expose: true
+            access_type: public_method
+            serialized_name: VatPercentageList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getVatPercentageList
+                setter: setVatPercentageList
+            type: array<float>
+            xml_list:
+                inline: false
+                entry_name: VatPercentage
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+        fileNameScan:
+            expose: true
+            access_type: public_method
+            serialized_name: FileNameScan
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getFileNameScan
+                setter: setFileNameScan
+            type: string

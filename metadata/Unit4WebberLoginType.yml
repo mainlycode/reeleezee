@@ -1,0 +1,22 @@
+MainlyCode\Reeleezee\ValueObject\Unit4WebberLoginType:
+    properties:
+        signup:
+            expose: true
+            access_type: public_method
+            serialized_name: Signup
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getSignup
+                setter: setSignup
+            type: boolean
+        loginName:
+            expose: true
+            access_type: public_method
+            serialized_name: LoginName
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getLoginName
+                setter: setLoginName
+            type: string

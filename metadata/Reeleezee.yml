@@ -1,0 +1,44 @@
+MainlyCode\Reeleezee\ValueObject\Reeleezee:
+    xml_root_name: Reeleezee
+    xml_root_namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+    properties:
+        import:
+            expose: true
+            access_type: public_method
+            serialized_name: Import
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getImport
+                setter: setImport
+            type: MainlyCode\Reeleezee\ValueObject\Reeleezee\ImportAType
+        importResult:
+            expose: true
+            access_type: public_method
+            serialized_name: ImportResult
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getImportResult
+                setter: setImportResult
+            type: MainlyCode\Reeleezee\ValueObject\ImportResultType
+        export:
+            expose: true
+            access_type: public_method
+            serialized_name: Export
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getExport
+                setter: setExport
+            type: MainlyCode\Reeleezee\ValueObject\ImportOrExportType
+        scanPost:
+            expose: true
+            access_type: public_method
+            serialized_name: ScanPost
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getScanPost
+                setter: setScanPost
+            type: MainlyCode\Reeleezee\ValueObject\Reeleezee\ScanPostAType

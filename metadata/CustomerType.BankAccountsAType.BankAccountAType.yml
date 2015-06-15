@@ -1,0 +1,12 @@
+MainlyCode\Reeleezee\ValueObject\CustomerType\BankAccountsAType\BankAccountAType:
+    properties:
+        directDebitAuthorization:
+            expose: true
+            access_type: public_method
+            serialized_name: DirectDebitAuthorization
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDirectDebitAuthorization
+                setter: setDirectDebitAuthorization
+            type: MainlyCode\Reeleezee\ValueObject\CustomerType\BankAccountsAType\BankAccountAType\DirectDebitAuthorizationAType

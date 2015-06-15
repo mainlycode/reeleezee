@@ -1,0 +1,243 @@
+MainlyCode\Reeleezee\ValueObject\VendorType:
+    properties:
+        iD:
+            expose: true
+            access_type: public_method
+            serialized_name: ID
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getID
+                setter: setID
+            type: integer
+        code:
+            expose: true
+            access_type: public_method
+            serialized_name: Code
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getCode
+                setter: setCode
+            type: string
+        internalRlzID:
+            expose: true
+            access_type: public_method
+            serialized_name: InternalRlzID
+            accessor:
+                getter: getInternalRlzID
+                setter: setInternalRlzID
+            xml_attribute: true
+            type: string
+        fullName:
+            expose: true
+            access_type: public_method
+            serialized_name: FullName
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getFullName
+                setter: setFullName
+            type: string
+        searchName:
+            expose: true
+            access_type: public_method
+            serialized_name: SearchName
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getSearchName
+                setter: setSearchName
+            type: string
+        defaultAddress:
+            expose: true
+            access_type: public_method
+            serialized_name: DefaultAddress
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDefaultAddress
+                setter: setDefaultAddress
+            type: string
+        languageCode:
+            expose: true
+            access_type: public_method
+            serialized_name: LanguageCode
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getLanguageCode
+                setter: setLanguageCode
+            type: string
+        phoneNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: PhoneNumber
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getPhoneNumber
+                setter: setPhoneNumber
+            type: string
+        mobilePhoneNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: MobilePhoneNumber
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getMobilePhoneNumber
+                setter: setMobilePhoneNumber
+            type: string
+        faxNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: FaxNumber
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getFaxNumber
+                setter: setFaxNumber
+            type: string
+        emailAddress:
+            expose: true
+            access_type: public_method
+            serialized_name: EmailAddress
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getEmailAddress
+                setter: setEmailAddress
+            type: string
+        websiteAddress:
+            expose: true
+            access_type: public_method
+            serialized_name: WebsiteAddress
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getWebsiteAddress
+                setter: setWebsiteAddress
+            type: string
+        comment:
+            expose: true
+            access_type: public_method
+            serialized_name: Comment
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getComment
+                setter: setComment
+            type: string
+        chamberOfCommerceNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: ChamberOfCommerceNumber
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getChamberOfCommerceNumber
+                setter: setChamberOfCommerceNumber
+            type: string
+        chamberOfCommerceCity:
+            expose: true
+            access_type: public_method
+            serialized_name: ChamberOfCommerceCity
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getChamberOfCommerceCity
+                setter: setChamberOfCommerceCity
+            type: string
+        taxDepositOBNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: TaxDepositOBNumber
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getTaxDepositOBNumber
+                setter: setTaxDepositOBNumber
+            type: string
+        bankAccounts:
+            expose: true
+            access_type: public_method
+            serialized_name: BankAccounts
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getBankAccounts
+                setter: setBankAccounts
+            type: array<MainlyCode\Reeleezee\ValueObject\BankAccountType>
+            xml_list:
+                inline: false
+                entry_name: BankAccount
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+        openingbalance:
+            expose: true
+            access_type: public_method
+            serialized_name: Openingbalance
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getOpeningbalance
+                setter: setOpeningbalance
+            type: MainlyCode\Reeleezee\ValueObject\OpeningbalanceType
+        branchReference:
+            expose: true
+            access_type: public_method
+            serialized_name: BranchReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getBranchReference
+                setter: setBranchReference
+            type: MainlyCode\Reeleezee\ValueObject\VendorType\BranchReferenceAType
+        branch:
+            expose: true
+            access_type: public_method
+            serialized_name: Branch
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getBranch
+                setter: setBranch
+            type: string
+        addressList:
+            expose: true
+            access_type: public_method
+            serialized_name: AddressList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getAddressList
+                setter: setAddressList
+            type: array<MainlyCode\Reeleezee\ValueObject\VendorType\AddressListAType\AddressAType>
+            xml_list:
+                inline: false
+                entry_name: Address
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+        contactPersonList:
+            expose: true
+            access_type: public_method
+            serialized_name: ContactPersonList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getContactPersonList
+                setter: setContactPersonList
+            type: MainlyCode\Reeleezee\ValueObject\ContactPersonListType
+        relationList:
+            expose: true
+            access_type: public_method
+            serialized_name: RelationList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getRelationList
+                setter: setRelationList
+            type: array<MainlyCode\Reeleezee\ValueObject\VendorType\RelationListAType\ContactPersonReferenceAType>
+            xml_list:
+                inline: false
+                entry_name: ContactPersonReference
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'

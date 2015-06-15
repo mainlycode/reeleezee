@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--  Intellectual Property Reeleezee B.V.  -->
+<!--  Version Reeleezee SalesInvoice Version 1.27  -->
+<!--  Released by Reeleezee B.V. www.reeleezee.nl  -->
+
+<xs:schema 
+	id="ReeleezeeSalesInvoice"
+	version="1.27"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns:rlz="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns:rse="https://portal.reeleezee.nl/taxonomy/1.27/schemaExtentions"
+	elementFormDefault="qualified">
+	
+	<xs:include schemaLocation="RlzBaseStructures.xsd" />
+	<xs:include schemaLocation="RlzBaseTypes.xsd" />
+	<xs:include schemaLocation="RlzBaseEnums.xsd" />
+
+	<!-- definition of complex elements -->
+	
+	<xs:complexType name="SalesInvoiceListType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="SalesInvoice" type="SalesInvoiceType">
+				<xs:annotation>
+					<xs:documentation>Verkoopfactuur</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+
+	<xs:complexType name="SalesInvoiceType">
+		<xs:sequence>
+			<xs:element name="ReferenceNumber" type="xs:positiveInteger" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Factuurnummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		
+			<xs:choice>
+				<xs:sequence>
+					<xs:choice>
+						<xs:group ref="NillableContactPersonReferenceGroup" minOccurs="1" />
+
+						<xs:element name="ContactPerson" minOccurs="1" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Contactpersoon</xs:documentation>
+							</xs:annotation>
+						
+							<xs:complexType>
+								<xs:attribute name="ID" type="xs:positiveInteger" use="optional">
+									<xs:annotation>
+										<xs:documentation>Persoonnummer</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								
+								<xs:attribute name="SocialSecurityNumber" type="SocialSecurityNumberType" use="optional">
+									<xs:annotation>
+										<xs:documentation>Burger Service Nummer</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:complexType>
+
+							<xs:unique name="UniqueContactPersonForSalesInvoice1">
+								<xs:selector xpath="." />
+								<xs:field xpath="@ID" />
+							</xs:unique>
+							<xs:unique name="UniqueContactPersonForSalesInvoice2">
+								<xs:selector xpath="." />
+								<xs:field xpath="@Code" />
+							</xs:unique>
+							<xs:unique name="UniqueContactPersonForSalesInvoice3">
+								<xs:selector xpath="." />
+								<xs:field xpath="@SocialSecurityNumber" />
+							</xs:unique>
+							<xs:unique name="UniqueContactPersonForSalesInvoice4">
+								<xs:selector xpath="." />
+								<xs:field xpath="@InternalRlzID" />
+							</xs:unique>
+						</xs:element>
+					</xs:choice>
+					
+					<xs:choice>
+						<xs:group ref="NillableCustomerReferenceGroup" minOccurs="1" />
+
+						<xs:element name="CustomerID" type="xs:positiveInteger" minOccurs="1">
+							<xs:annotation>
+								<xs:documentation>Debiteurnummer (VERVALLEN, GEBRUIK CustomerReference)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:choice>
+				</xs:sequence>
+				<xs:choice>
+					<xs:group ref="NillableCustomerReferenceGroup" minOccurs="0" />
+
+					<xs:element name="CustomerID" type="xs:positiveInteger" minOccurs="0" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Debiteurnummer (VERVALLEN, GEBRUIK CustomerReference)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:choice>
+					
+			</xs:choice>
+			
+			
+			<xs:element name="RecipientAddress" type="RecipientAddressType" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Adres ontvanger (zet op nil om standaard adres van de klant te gebruiken)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="LanguageCode" type="ISOAvailableLanguageCode" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Taalcode</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="DocumentDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Document datum</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="BookDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Boek datum</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="PaymentDueDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Datum betalingstermijn verstreken</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="IsVatIncludedInPrice" type="xs:boolean" minOccurs="0" default="true">
+				<xs:annotation>
+					<xs:documentation>Zijn de bedragen inclusief BTW</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Status" type="SalesInvoiceStatusType" minOccurs="0" default="tentative">
+				<xs:annotation>
+					<xs:documentation>Status</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:group ref="PaymentAccountReferenceGroup" minOccurs="0" />
+
+			<xs:group ref="PaymentMethodReferenceGroup" minOccurs="0" />
+		
+			<xs:element name="Header" type="xs:string" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Betreft</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Footer" type="xs:string" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Afsluitende tekst</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="BottomText" type="xs:string" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Voetregel</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="PaymentReference" type="PaymentReferenceType" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Betalingskenmerk</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Discount" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Korting</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:choice>
+							<xs:element name="Percentage" type="xs:double" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation>Kortingspercentage</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							
+							<xs:element name="Amount" type="PriceType" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation>Kortingsbedrag</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:choice>
+						<xs:element name="Comment" minOccurs="0" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Kortingscommentaar</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="NonEmptyStringType">
+									<xs:maxLength value="200" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="DocumentOrigin" type="SalesInvoiceOriginType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Soort factuur</xs:documentation>
+				</xs:annotation>
+			</xs:element>			
+			
+			<xs:element name="LineList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence minOccurs="1" maxOccurs="unbounded">
+						<xs:element name="Line" type="SalesInvoiceLineType">
+							<xs:annotation>
+								<xs:documentation>Factuurregel</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		
+		<xs:attribute name="ReferenceNumber" type="xs:positiveInteger" use="optional">
+			<xs:annotation>
+				<xs:documentation>Factuurnummer -> herkenning van bestaande / nieuwe factuur</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		
+		<xs:attribute name="InternalRlzID" type="ReeleezeeIdType" use="optional">
+			<xs:annotation>
+				<xs:documentation>DO NOT USE !</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	
+	<xs:complexType name="SalesInvoiceLineType">
+		<xs:sequence>
+			<xs:element name="Date" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Datum</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Description" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Omschrijving</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="NonEmptyMultilineStringType">
+						<xs:maxLength value="1000" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Quantity" type="xs:double" minOccurs="0" default="1">
+				<xs:annotation>
+					<xs:documentation>Hoeveelheid</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Unit" type="UnitCodeType" minOccurs="0" default="ST">
+				<xs:annotation>
+					<xs:documentation>Eenheid</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:choice>
+				<xs:sequence>
+					<xs:choice>
+						<xs:group ref="ProductReferenceGroup" minOccurs="1" />
+
+						<xs:element name="ProductCode" type="ProductCodeType" minOccurs="1">
+							<xs:annotation>
+								<xs:documentation>Productcode</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:choice>
+					
+					<xs:element name="Price" type="PricePreciseType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Prijs</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				
+				<xs:sequence>
+					<xs:element name="Price" type="PricePreciseType" minOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Prijs</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+
+					<xs:choice>
+						<xs:group ref="ProductReferenceGroup" minOccurs="0" />
+
+						<xs:element name="ProductCode" type="ProductCodeType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Productcode</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:choice>
+				</xs:sequence>
+			</xs:choice>
+			
+			<xs:element name="VatCode" type="VatCodeType" minOccurs="0" default="H">
+				<xs:annotation>
+					<xs:documentation>BTW code</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Discount" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Korting</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:choice>
+							<xs:element name="Percentage" type="xs:double" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation>Kortingspercentage</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							
+							<xs:element name="Amount" type="PriceType" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation>Kortingsbedrag</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:choice>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			
+			<xs:choice>
+				<xs:sequence>
+					<xs:group ref="AccountReferenceGroup" minOccurs="0" />
+					<xs:group ref="NillableEmployeeReferenceGroup" minOccurs="0" />
+					<xs:group ref="NillableDepartmentReferenceGroup" minOccurs="0" />
+					<xs:group ref="NillableProjectReferenceGroup" minOccurs="0" />
+				</xs:sequence>
+			
+				<xs:sequence>
+					<xs:element name="AccountNumber" type="AccountNumberType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Grootboekrekening (VERVALLEN, GEBRUIK ProductReference)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element name="EmployeeCode" type="EmployeeCodeType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Medewerkercode (VERVALLEN, GEBRUIK EmployeeReference)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element name="DepartmentCode" type="DepartmentCodeType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Afdelingscode (VERVALLEN, GEBRUIK DepartmentReference)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element name="Project" minOccurs="0" rse:CanAutoTrim="true">
+						<xs:annotation>
+							<xs:documentation>Project (VERVALLEN, GEBRUIK ProjectReference)</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="TrimmedNonEmptyStringType">
+								<xs:maxLength value="50" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:choice>
+				
+			
+			<xs:element name="PageBreak" type="xs:boolean" minOccurs="0" default="false">
+				<xs:annotation>
+					<xs:documentation>Factuurregel op een nieuwe pagina</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>

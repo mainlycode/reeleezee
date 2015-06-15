@@ -1,0 +1,205 @@
+MainlyCode\Reeleezee\ValueObject\ProductType:
+    properties:
+        code:
+            expose: true
+            access_type: public_method
+            serialized_name: Code
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getCode
+                setter: setCode
+            type: string
+        internalRlzID:
+            expose: true
+            access_type: public_method
+            serialized_name: InternalRlzID
+            accessor:
+                getter: getInternalRlzID
+                setter: setInternalRlzID
+            xml_attribute: true
+            type: string
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getName
+                setter: setName
+            type: string
+        description:
+            expose: true
+            access_type: public_method
+            serialized_name: Description
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDescription
+                setter: setDescription
+            type: string
+        comment:
+            expose: true
+            access_type: public_method
+            serialized_name: Comment
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getComment
+                setter: setComment
+            type: string
+        price:
+            expose: true
+            access_type: public_method
+            serialized_name: Price
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getPrice
+                setter: setPrice
+            type: float
+        costPrice:
+            expose: true
+            access_type: public_method
+            serialized_name: CostPrice
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getCostPrice
+                setter: setCostPrice
+            type: float
+        purchasePrice:
+            expose: true
+            access_type: public_method
+            serialized_name: PurchasePrice
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getPurchasePrice
+                setter: setPurchasePrice
+            type: float
+        unit:
+            expose: true
+            access_type: public_method
+            serialized_name: Unit
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getUnit
+                setter: setUnit
+            type: string
+        accountReference:
+            expose: true
+            access_type: public_method
+            serialized_name: AccountReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getAccountReference
+                setter: setAccountReference
+            type: MainlyCode\Reeleezee\ValueObject\ProductType\AccountReferenceAType
+        accountNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: AccountNumber
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getAccountNumber
+                setter: setAccountNumber
+            type: string
+        vatGroup:
+            expose: true
+            access_type: public_method
+            serialized_name: VatGroup
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getVatGroup
+                setter: setVatGroup
+            type: string
+        vendorProductCode:
+            expose: true
+            access_type: public_method
+            serialized_name: VendorProductCode
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getVendorProductCode
+                setter: setVendorProductCode
+            type: string
+        barcode:
+            expose: true
+            access_type: public_method
+            serialized_name: Barcode
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getBarcode
+                setter: setBarcode
+            type: string
+        type:
+            expose: true
+            access_type: public_method
+            serialized_name: Type
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getType
+                setter: setType
+            type: string
+        outputTypeReference:
+            expose: true
+            access_type: public_method
+            serialized_name: OutputTypeReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getOutputTypeReference
+                setter: setOutputTypeReference
+            type: MainlyCode\Reeleezee\ValueObject\ProductType\OutputTypeReferenceAType
+        sorting:
+            expose: true
+            access_type: public_method
+            serialized_name: Sorting
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getSorting
+                setter: setSorting
+            type: string
+        active:
+            expose: true
+            access_type: public_method
+            serialized_name: Active
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getActive
+                setter: setActive
+            type: boolean
+        productGroupReferenceList:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductGroupReferenceList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getProductGroupReferenceList
+                setter: setProductGroupReferenceList
+            type: array<MainlyCode\Reeleezee\ValueObject\ProductGroupReferenceType>
+            xml_list:
+                inline: false
+                entry_name: ProductGroupReference
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+        cashRegisterTypeReference:
+            expose: true
+            access_type: public_method
+            serialized_name: CashRegisterTypeReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getCashRegisterTypeReference
+                setter: setCashRegisterTypeReference
+            type: MainlyCode\Reeleezee\ValueObject\ProductType\CashRegisterTypeReferenceAType

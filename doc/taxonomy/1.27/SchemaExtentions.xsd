@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--  Intellectual Property Reeleezee B.V.  -->
+<!--  Version Reeleezee BaseTypes Version 1.27  -->
+<!--  Released by Reeleezee B.V. www.reeleezee.nl  -->
+
+<xs:schema 
+	version="1.27"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="https://portal.reeleezee.nl/taxonomy/1.27/schemaExtentions"
+	xmlns="https://portal.reeleezee.nl/taxonomy/1.27/schemaExtentions"
+	elementFormDefault="qualified">
+	
+	<xs:attribute name="CanIgnore" type="xs:boolean" />
+	<xs:attribute name="CanAutoTrim" type="xs:boolean" />
+	<xs:attribute name="CanAutoTruncate" type="xs:boolean" />
+
+	<xs:attribute name="ImportColumnName" type="xs:string" />
+	<xs:attribute name="ImportUseChildType" type="xs:boolean" />
+	<xs:attribute name="Deprecated" type="xs:boolean" />
+</xs:schema>

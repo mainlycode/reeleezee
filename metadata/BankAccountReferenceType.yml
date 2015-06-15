@@ -1,0 +1,20 @@
+MainlyCode\Reeleezee\ValueObject\BankAccountReferenceType:
+    properties:
+        bBAN:
+            expose: true
+            access_type: public_method
+            serialized_name: BBAN
+            accessor:
+                getter: getBBAN
+                setter: setBBAN
+            xml_attribute: true
+            type: string
+        iBAN:
+            expose: true
+            access_type: public_method
+            serialized_name: IBAN
+            accessor:
+                getter: getIBAN
+                setter: setIBAN
+            xml_attribute: true
+            type: string

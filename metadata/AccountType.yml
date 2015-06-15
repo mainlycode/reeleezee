@@ -1,0 +1,192 @@
+MainlyCode\Reeleezee\ValueObject\AccountType:
+    properties:
+        number:
+            expose: true
+            access_type: public_method
+            serialized_name: Number
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getNumber
+                setter: setNumber
+            type: string
+        type:
+            expose: true
+            access_type: public_method
+            serialized_name: Type
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getType
+                setter: setType
+            type: string
+        summationAccount:
+            expose: true
+            access_type: public_method
+            serialized_name: SummationAccount
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getSummationAccount
+                setter: setSummationAccount
+            type: string
+        isSummationAccount:
+            expose: true
+            access_type: public_method
+            serialized_name: IsSummationAccount
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getIsSummationAccount
+                setter: setIsSummationAccount
+            type: boolean
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getName
+                setter: setName
+            type: string
+        exportNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: ExportNumber
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getExportNumber
+                setter: setExportNumber
+            type: string
+        comment:
+            expose: true
+            access_type: public_method
+            serialized_name: Comment
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getComment
+                setter: setComment
+            type: string
+        notes:
+            expose: true
+            access_type: public_method
+            serialized_name: Notes
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getNotes
+                setter: setNotes
+            type: string
+        defaultVatCode:
+            expose: true
+            access_type: public_method
+            serialized_name: DefaultVatCode
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDefaultVatCode
+                setter: setDefaultVatCode
+            type: string
+        allowSalesInvoice:
+            expose: true
+            access_type: public_method
+            serialized_name: AllowSalesInvoice
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getAllowSalesInvoice
+                setter: setAllowSalesInvoice
+            type: boolean
+        allowPurchaseInvoice:
+            expose: true
+            access_type: public_method
+            serialized_name: AllowPurchaseInvoice
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getAllowPurchaseInvoice
+                setter: setAllowPurchaseInvoice
+            type: boolean
+        allowManualJournal:
+            expose: true
+            access_type: public_method
+            serialized_name: AllowManualJournal
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getAllowManualJournal
+                setter: setAllowManualJournal
+            type: boolean
+        allowBankCashMutation:
+            expose: true
+            access_type: public_method
+            serialized_name: AllowBankCashMutation
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getAllowBankCashMutation
+                setter: setAllowBankCashMutation
+            type: boolean
+        useForBank:
+            expose: true
+            access_type: public_method
+            serialized_name: UseForBank
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getUseForBank
+                setter: setUseForBank
+            type: boolean
+        useForBalance:
+            expose: true
+            access_type: public_method
+            serialized_name: UseForBalance
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getUseForBalance
+                setter: setUseForBalance
+            type: boolean
+        requireDimensionDepartment:
+            expose: true
+            access_type: public_method
+            serialized_name: RequireDimensionDepartment
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getRequireDimensionDepartment
+                setter: setRequireDimensionDepartment
+            type: boolean
+        requireDimensionEmployee:
+            expose: true
+            access_type: public_method
+            serialized_name: RequireDimensionEmployee
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getRequireDimensionEmployee
+                setter: setRequireDimensionEmployee
+            type: boolean
+        requireDimensionProduct:
+            expose: true
+            access_type: public_method
+            serialized_name: RequireDimensionProduct
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getRequireDimensionProduct
+                setter: setRequireDimensionProduct
+            type: boolean
+        requireDimensionProject:
+            expose: true
+            access_type: public_method
+            serialized_name: RequireDimensionProject
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getRequireDimensionProject
+                setter: setRequireDimensionProject
+            type: boolean

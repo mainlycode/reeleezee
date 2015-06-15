@@ -1,0 +1,22 @@
+MainlyCode\Reeleezee\ValueObject\SalesInvoiceLineType\DiscountAType:
+    properties:
+        percentage:
+            expose: true
+            access_type: public_method
+            serialized_name: Percentage
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getPercentage
+                setter: setPercentage
+            type: float
+        amount:
+            expose: true
+            access_type: public_method
+            serialized_name: Amount
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getAmount
+                setter: setAmount
+            type: float

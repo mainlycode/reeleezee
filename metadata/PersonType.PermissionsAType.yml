@@ -1,0 +1,100 @@
+MainlyCode\Reeleezee\ValueObject\PersonType\PermissionsAType:
+    properties:
+        declarationSalaryTax:
+            expose: true
+            access_type: public_method
+            serialized_name: DeclarationSalaryTax
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDeclarationSalaryTax
+                setter: setDeclarationSalaryTax
+            xml_list:
+                inline: true
+                entry_name: DeclarationSalaryTax
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            type: array<MainlyCode\Reeleezee\ValueObject\PermissionsCustomerType>
+        declarationVatReturn:
+            expose: true
+            access_type: public_method
+            serialized_name: DeclarationVatReturn
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDeclarationVatReturn
+                setter: setDeclarationVatReturn
+            xml_list:
+                inline: true
+                entry_name: DeclarationVatReturn
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            type: array<MainlyCode\Reeleezee\ValueObject\PermissionsCustomerType>
+        declarationIntracommunitySupplies:
+            expose: true
+            access_type: public_method
+            serialized_name: DeclarationIntracommunitySupplies
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDeclarationIntracommunitySupplies
+                setter: setDeclarationIntracommunitySupplies
+            xml_list:
+                inline: true
+                entry_name: DeclarationIntracommunitySupplies
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            type: array<MainlyCode\Reeleezee\ValueObject\PermissionsCustomerType>
+        declarationIncomeTax:
+            expose: true
+            access_type: public_method
+            serialized_name: DeclarationIncomeTax
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDeclarationIncomeTax
+                setter: setDeclarationIncomeTax
+            xml_list:
+                inline: true
+                entry_name: DeclarationIncomeTax
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            type: array<MainlyCode\Reeleezee\ValueObject\PermissionsCustomerType>
+        declarationCorporateIncomeTax:
+            expose: true
+            access_type: public_method
+            serialized_name: DeclarationCorporateIncomeTax
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDeclarationCorporateIncomeTax
+                setter: setDeclarationCorporateIncomeTax
+            xml_list:
+                inline: true
+                entry_name: DeclarationCorporateIncomeTax
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            type: array<MainlyCode\Reeleezee\ValueObject\PermissionsCustomerType>
+        declarationShortCorporateIncomeTax:
+            expose: true
+            access_type: public_method
+            serialized_name: DeclarationShortCorporateIncomeTax
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDeclarationShortCorporateIncomeTax
+                setter: setDeclarationShortCorporateIncomeTax
+            xml_list:
+                inline: true
+                entry_name: DeclarationShortCorporateIncomeTax
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            type: array<MainlyCode\Reeleezee\ValueObject\PermissionsCustomerType>
+        declarationCreditReport:
+            expose: true
+            access_type: public_method
+            serialized_name: DeclarationCreditReport
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDeclarationCreditReport
+                setter: setDeclarationCreditReport
+            xml_list:
+                inline: true
+                entry_name: DeclarationCreditReport
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            type: array<MainlyCode\Reeleezee\ValueObject\PermissionsCustomerType>

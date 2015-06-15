@@ -1,0 +1,19 @@
+MainlyCode\Reeleezee\ValueObject\ImportResultType\MaxMessageAType:
+    properties:
+        __value:
+            expose: true
+            xml_value: true
+            access_type: public_method
+            accessor:
+                getter: value
+                setter: value
+            type: string
+        level:
+            expose: true
+            access_type: public_method
+            serialized_name: Level
+            accessor:
+                getter: getLevel
+                setter: setLevel
+            xml_attribute: true
+            type: string

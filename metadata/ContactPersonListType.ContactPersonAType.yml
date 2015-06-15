@@ -1,0 +1,29 @@
+MainlyCode\Reeleezee\ValueObject\ContactPersonListType\ContactPersonAType:
+    properties:
+        iD:
+            expose: true
+            access_type: public_method
+            serialized_name: ID
+            accessor:
+                getter: getID
+                setter: setID
+            xml_attribute: true
+            type: integer
+        socialSecurityNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: SocialSecurityNumber
+            accessor:
+                getter: getSocialSecurityNumber
+                setter: setSocialSecurityNumber
+            xml_attribute: true
+            type: string
+        internalRlzID:
+            expose: true
+            access_type: public_method
+            serialized_name: InternalRlzID
+            accessor:
+                getter: getInternalRlzID
+                setter: setInternalRlzID
+            xml_attribute: true
+            type: string

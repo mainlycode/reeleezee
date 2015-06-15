@@ -1,0 +1,16 @@
+MainlyCode\Reeleezee\ValueObject\ProductType\ProductGroupReferenceListAType:
+    properties:
+        productGroupReference:
+            expose: true
+            access_type: public_method
+            serialized_name: ProductGroupReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getProductGroupReference
+                setter: setProductGroupReference
+            xml_list:
+                inline: true
+                entry_name: ProductGroupReference
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            type: array<MainlyCode\Reeleezee\ValueObject\ProductGroupReferenceType>

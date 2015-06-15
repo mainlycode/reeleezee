@@ -1,0 +1,82 @@
+MainlyCode\Reeleezee\ValueObject\CustomerTaxDepositType:
+    properties:
+        customerReference:
+            expose: true
+            access_type: public_method
+            serialized_name: CustomerReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getCustomerReference
+                setter: setCustomerReference
+            type: MainlyCode\Reeleezee\ValueObject\CustomerTaxDepositType\CustomerReferenceAType
+        contactPersonReference:
+            expose: true
+            access_type: public_method
+            serialized_name: ContactPersonReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getContactPersonReference
+                setter: setContactPersonReference
+            type: MainlyCode\Reeleezee\ValueObject\CustomerTaxDepositType\ContactPersonReferenceAType
+        type:
+            expose: true
+            access_type: public_method
+            serialized_name: Type
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getType
+                setter: setType
+            type: string
+        number:
+            expose: true
+            access_type: public_method
+            serialized_name: Number
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getNumber
+                setter: setNumber
+            type: string
+        year:
+            expose: true
+            access_type: public_method
+            serialized_name: Year
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getYear
+                setter: setYear
+            type: integer
+        period:
+            expose: true
+            access_type: public_method
+            serialized_name: Period
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getPeriod
+                setter: setPeriod
+            type: integer
+        expireDate:
+            expose: true
+            access_type: public_method
+            serialized_name: ExpireDate
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getExpireDate
+                setter: setExpireDate
+            type: Goetas\Xsd\XsdToPhp\XMLSchema\DateTime
+        status:
+            expose: true
+            access_type: public_method
+            serialized_name: Status
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getStatus
+                setter: setStatus
+            type: string

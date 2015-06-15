@@ -1,0 +1,33 @@
+{
+    "name": "mainlycode/reeleezee",
+    "type": "library",
+    "require": {
+        "ext-soap": "*",
+        "jms/serializer": "xsd2php-dev as 0.18.0"
+    },
+    "require-dev": {
+        "goetas/xsd2php": "2.*@dev",
+        "goetas/xsd-reader": "2.*@dev",
+        "phpunit/phpunit": "^4.7"
+    },
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "othillo",
+            "email": "othillo@othillo.nl"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "MainlyCode\\Reeleezee": "src/"
+          }
+    },
+    "scripts": {
+        "build-php": "xsd2php convert:php --ns-map='https://portal.reeleezee.nl/taxonomy/1.27;MainlyCode/Reeleezee/ValueObject/' --ns-dest='MainlyCode/Reeleezee/ValueObject/;src/MainlyCode/Reeleezee/ValueObject' doc/taxonomy/1.27/*.xsd",
+        "build-yml": "xsd2php convert:jms-yaml --ns-map='https://portal.reeleezee.nl/taxonomy/1.27;MainlyCode/Reeleezee/ValueObject/' --ns-dest='MainlyCode/Reeleezee/ValueObject/;metadata' doc/taxonomy/1.27/*.xsd"
+    },
+    "repositories": [{
+        "type": "vcs",
+        "url": "https://github.com/goetas/serializer.git"
+    }]
+}

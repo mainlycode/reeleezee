@@ -1,0 +1,12 @@
+MainlyCode\Reeleezee\ValueObject\CategoryListType:
+    properties:
+        categoryReference:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getCategoryReference
+                setter: setCategoryReference
+            type: MainlyCode\Reeleezee\ValueObject\CategoryListType\CategoryReferenceAType

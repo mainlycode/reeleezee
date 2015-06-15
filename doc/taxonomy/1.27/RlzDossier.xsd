@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--  Intellectual Property Reeleezee B.V.  -->
+<!--  Version Reeleezee Dossier Version 1.27  -->
+<!--  Released by Reeleezee B.V. www.reeleezee.nl  -->
+
+<xs:schema
+	id="ReeleezeeDossier"
+	version="1.27"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:rse="https://portal.reeleezee.nl/taxonomy/1.27/schemaExtentions"
+	xsi:schemaLocation="https://portal.reeleezee.nl/taxonomy/1.27/schemaExtentions SchemaExtentions.xsd" 
+	elementFormDefault="qualified">
+	
+	<xs:include schemaLocation="RlzBaseStructures.xsd" />
+	<xs:include schemaLocation="RlzBaseTypes.xsd" />
+	<xs:include schemaLocation="RlzBaseEnums.xsd" />
+	
+	
+	<!-- definition of complex elements -->
+	
+	<xs:complexType name="DossierFileListType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="DossierFile" type="DossierFileType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	
+	<xs:complexType name="DossierFileType">
+		<xs:sequence>
+			<xs:element name="Path" type="PathType" minOccurs="0" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Pad</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="FileName" minOccurs="1" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Document naam</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="FileNameType">
+						<xs:maxLength value="256" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+		
+			<xs:choice>
+				<xs:element name="SourceFileLocation" type="FullFilePathType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Bron bestand</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				
+				<xs:element name="SourceFileContent" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Bron bestand</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="xs:base64Binary">
+								<xs:attribute name="SourceFileLocation" type="FullFilePathType" use="optional">
+									<xs:annotation>
+										<xs:documentation>Bron bestand</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="Compression" use="optional">
+									<xs:annotation>
+										<xs:documentation>Compressie</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:token">
+											<xs:enumeration value="none">
+												<xs:annotation>
+													<xs:documentation>Geen</xs:documentation>
+												</xs:annotation>
+											</xs:enumeration>
+											
+											<xs:enumeration value="gzip">
+												<xs:annotation>
+													<xs:documentation>gzip</xs:documentation>
+												</xs:annotation>
+											</xs:enumeration>
+											
+											<xs:enumeration value="zip">
+												<xs:annotation>
+													<xs:documentation>zip</xs:documentation>
+												</xs:annotation>
+											</xs:enumeration>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:attribute>
+							</xs:extension>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+
+			<xs:element name="Dossier" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dossier</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:choice>
+						<xs:group ref="CustomerReferenceGroup" minOccurs="1" />
+						<xs:group ref="ContactPersonReferenceGroup" minOccurs="1" />
+						<xs:group ref="EmployeeReferenceGroup" minOccurs="1" />
+						<xs:group ref="AdministrationReferenceGroup" minOccurs="1" />
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			
+			<xs:element name="Owner" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Eigenaar</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:choice>
+						<xs:group ref="ContactPersonReferenceGroup" minOccurs="1" />
+						<xs:group ref="EmployeeReferenceGroup" minOccurs="1" />
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			
+			<xs:element name="Sharing" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Delen</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:token">
+						<xs:enumeration value="None">
+							<xs:annotation>
+								<xs:documentation>Niet delen</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="DossierOwners">
+							<xs:annotation>
+								<xs:documentation>Met de eigenaren van het dossier</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Accountant">
+							<xs:annotation>
+								<xs:documentation>Met medewerkers van de accountant</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="DossierOwnerAndAccountant">
+							<xs:annotation>
+								<xs:documentation>Met de eigenaren van het dossier en de medewerkers van de accountant</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="ExternalReference" minOccurs="0" nillable="true" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Externe referentie</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Reference" minOccurs="0" nillable="true" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Referentie</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="LastModifiedDate" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Datum laatst gewijzigd</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="TransactionDate" type="xs:date" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Transactie datum</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Language" type="ISOLanguageCode" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Taal</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="BookYear" type="xs:positiveInteger" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Boekjaar</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="DocumentReference" type="DocumentReferenceType" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Boekstuknummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			
+			<xs:group ref="DefaultDimensionsGroup" />
+			
+			
+			<xs:element name="Tags" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Trefwoorden</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="NonEmptyMultilineStringType">
+						<xs:maxLength value="100" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Comment" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Commentaar</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="NonEmptyMultilineStringType">
+						<xs:maxLength value="200" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Authors" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Auteurs</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="NonEmptyMultilineStringType">
+						<xs:maxLength value="200" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="SignerList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="EmployeeReference" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Medewerker referentie</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="EmployeeReferenceType">
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+
+						<xs:element name="ContactPersonReference" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Contactpersoon referentie</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="ContactPersonReferenceType">
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="WorkflowReference" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Specifies the workflow which should be used for the new document.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="Name" type="TrimmedNonEmptyStringType" use="optional">
+						<xs:annotation>
+							<xs:documentation>Workflow name</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+
+		</xs:sequence>
+		
+		<xs:attribute name="Path" type="PathType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Pad -> herkenning van bestaand / nieuw document</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		
+		<xs:attribute name="FileName" use="optional">
+			<xs:annotation>
+				<xs:documentation>Document naam -> herkenning van bestaand / nieuw document</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="FileNameType">
+					<xs:maxLength value="256" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

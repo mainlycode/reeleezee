@@ -1,0 +1,30 @@
+MainlyCode\Reeleezee\ValueObject\DossierFileType\SignerListAType:
+    properties:
+        employeeReference:
+            expose: true
+            access_type: public_method
+            serialized_name: EmployeeReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getEmployeeReference
+                setter: setEmployeeReference
+            xml_list:
+                inline: true
+                entry_name: EmployeeReference
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            type: array<MainlyCode\Reeleezee\ValueObject\DossierFileType\SignerListAType\EmployeeReferenceAType>
+        contactPersonReference:
+            expose: true
+            access_type: public_method
+            serialized_name: ContactPersonReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getContactPersonReference
+                setter: setContactPersonReference
+            xml_list:
+                inline: true
+                entry_name: ContactPersonReference
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            type: array<MainlyCode\Reeleezee\ValueObject\DossierFileType\SignerListAType\ContactPersonReferenceAType>

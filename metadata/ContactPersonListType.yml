@@ -1,0 +1,26 @@
+MainlyCode\Reeleezee\ValueObject\ContactPersonListType:
+    properties:
+        contactPersonReference:
+            expose: true
+            access_type: public_method
+            serialized_name: ContactPersonReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getContactPersonReference
+                setter: setContactPersonReference
+            type: MainlyCode\Reeleezee\ValueObject\ContactPersonListType\ContactPersonReferenceAType
+        contactPerson:
+            expose: true
+            access_type: public_method
+            serialized_name: ContactPerson
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getContactPerson
+                setter: setContactPerson
+            xml_list:
+                inline: true
+                entry_name: ContactPerson
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            type: array<MainlyCode\Reeleezee\ValueObject\ContactPersonListType\ContactPersonAType>

@@ -1,0 +1,28 @@
+MainlyCode\Reeleezee\ValueObject\DossierFileType\SourceFileContentAType:
+    properties:
+        __value:
+            expose: true
+            xml_value: true
+            access_type: public_method
+            accessor:
+                getter: value
+                setter: value
+            type: \AnySimpleType
+        sourceFileLocation:
+            expose: true
+            access_type: public_method
+            serialized_name: SourceFileLocation
+            accessor:
+                getter: getSourceFileLocation
+                setter: setSourceFileLocation
+            xml_attribute: true
+            type: string
+        compression:
+            expose: true
+            access_type: public_method
+            serialized_name: Compression
+            accessor:
+                getter: getCompression
+                setter: setCompression
+            xml_attribute: true
+            type: string

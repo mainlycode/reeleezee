@@ -1,0 +1,72 @@
+MainlyCode\Reeleezee\ValueObject\BankAccountType:
+    properties:
+        bBAN:
+            expose: true
+            access_type: public_method
+            serialized_name: BBAN
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getBBAN
+                setter: setBBAN
+            type: string
+        iBAN:
+            expose: true
+            access_type: public_method
+            serialized_name: IBAN
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getIBAN
+                setter: setIBAN
+            type: string
+        isDefault:
+            expose: true
+            access_type: public_method
+            serialized_name: IsDefault
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getIsDefault
+                setter: setIsDefault
+            type: boolean
+        bIC:
+            expose: true
+            access_type: public_method
+            serialized_name: BIC
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getBIC
+                setter: setBIC
+            type: string
+        payee:
+            expose: true
+            access_type: public_method
+            serialized_name: Payee
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getPayee
+                setter: setPayee
+            type: string
+        countryCode:
+            expose: true
+            access_type: public_method
+            serialized_name: CountryCode
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getCountryCode
+                setter: setCountryCode
+            type: string
+        city:
+            expose: true
+            access_type: public_method
+            serialized_name: City
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getCity
+                setter: setCity
+            type: string

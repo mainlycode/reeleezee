@@ -1,0 +1,22 @@
+MainlyCode\Reeleezee\ValueObject\CustomerType\DefaultInvoiceSendMethodAType:
+    properties:
+        addressReference:
+            expose: true
+            access_type: public_method
+            serialized_name: AddressReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getAddressReference
+                setter: setAddressReference
+            type: MainlyCode\Reeleezee\ValueObject\CustomerType\DefaultInvoiceSendMethodAType\AddressReferenceAType
+        emailAddressReference:
+            expose: true
+            access_type: public_method
+            serialized_name: EmailAddressReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getEmailAddressReference
+                setter: setEmailAddressReference
+            type: MainlyCode\Reeleezee\ValueObject\CustomerType\DefaultInvoiceSendMethodAType\EmailAddressReferenceAType

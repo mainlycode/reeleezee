@@ -1,0 +1,16 @@
+MainlyCode\Reeleezee\ValueObject\EmployeeType\RelationListAType:
+    properties:
+        customerReference:
+            expose: true
+            access_type: public_method
+            serialized_name: CustomerReference
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getCustomerReference
+                setter: setCustomerReference
+            xml_list:
+                inline: true
+                entry_name: CustomerReference
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            type: array<MainlyCode\Reeleezee\ValueObject\EmployeeType\RelationListAType\CustomerReferenceAType>

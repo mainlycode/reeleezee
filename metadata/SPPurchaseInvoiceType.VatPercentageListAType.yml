@@ -1,0 +1,16 @@
+MainlyCode\Reeleezee\ValueObject\SPPurchaseInvoiceType\VatPercentageListAType:
+    properties:
+        vatPercentage:
+            expose: true
+            access_type: public_method
+            serialized_name: VatPercentage
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getVatPercentage
+                setter: setVatPercentage
+            xml_list:
+                inline: true
+                entry_name: VatPercentage
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            type: array<float>

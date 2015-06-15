@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--  Intellectual Property Reeleezee B.V.  -->
+<!--  Version Reeleezee Account Version 1.27  -->
+<!--  Released by Reeleezee B.V. www.reeleezee.nl  -->
+
+<xs:schema 
+	id="ReeleezeeAccount"
+	version="1.12"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:rse="https://portal.reeleezee.nl/taxonomy/1.27/schemaExtentions"
+	xsi:schemaLocation="https://portal.reeleezee.nl/taxonomy/1.27/schemaExtentions SchemaExtentions.xsd" 
+	elementFormDefault="qualified">
+	
+	
+	
+	<xs:include schemaLocation="RlzBaseStructures.xsd" />
+	<xs:include schemaLocation="RlzBaseTypes.xsd" />
+	<xs:include schemaLocation="RlzBaseEnums.xsd" />
+
+	<!-- definition of complex elements -->
+	
+	<xs:complexType name="AccountListType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="Account" type="AccountType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	
+	<xs:complexType name="AccountType">
+		<xs:sequence>
+			<xs:element name="Number" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Rekening nummer</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:union memberTypes="AccountNumberType RootAccountNumberType" />
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Type" type="AccountTypeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Type rekening</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="SummationAccount" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Rekening nummer verdichting</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:union memberTypes="AccountNumberType RootAccountNumberType" />
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="IsSummationAccount" type="xs:boolean" minOccurs="0" default="false">
+				<xs:annotation>
+					<xs:documentation>Is de grootboekrekening een verdichting</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Name" minOccurs="0" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Naam</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="50" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="ExportNumber" minOccurs="0" nillable="true" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Rekening nummer voor export</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="15" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Comment" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Commentaar</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="NonEmptyMultilineStringType">
+						<xs:maxLength value="2000" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Notes" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Opmerkingen/informatie</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="NonEmptyMultilineStringType">
+						<xs:maxLength value="2000" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="DefaultVatCode" type="VatCodeType" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Voorkeur BTW tarief</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="AllowSalesInvoice" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Verkoop boeking toegestaan</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="AllowPurchaseInvoice" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Inkoop boeking toegestaan</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="AllowManualJournal" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Memoriaal boeking toegestaan</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="AllowBankCashMutation" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Bank en Kas, Kosten/Opbrengsten boeking toegestaan</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="UseForBank" type="xs:boolean" minOccurs="0" default="false">
+				<xs:annotation>
+					<xs:documentation>Gebruik grootboekrekening om het saldo van een bankrekening of kas te registreren</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="UseForBalance" type="xs:boolean" minOccurs="0" default="false">
+				<xs:annotation>
+					<xs:documentation>Gebruik grootboekrekening om het saldo van een rekening courant verhouding te registreren</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="RequireDimensionDepartment" type="xs:boolean" minOccurs="0" default="false">
+				<xs:annotation>
+					<xs:documentation>Verplicht boeken met de dimensie afdeling</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="RequireDimensionEmployee" type="xs:boolean" minOccurs="0" default="false">
+				<xs:annotation>
+					<xs:documentation>Verplicht boeken met de dimensie medewerker</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="RequireDimensionProduct" type="xs:boolean" minOccurs="0" default="false">
+				<xs:annotation>
+					<xs:documentation>Verplicht boeken met de dimensie Producp</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="RequireDimensionProject" type="xs:boolean" minOccurs="0" default="false">
+				<xs:annotation>
+					<xs:documentation>Verplicht boeken met de dimensie project</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	
+		<xs:attribute name="Number" use="required">
+			<xs:annotation>
+				<xs:documentation>Rekening nummer -> herkenning van bestaande / nieuwe grootboek rekening</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:union memberTypes="AccountNumberType RootAccountNumberType" />
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

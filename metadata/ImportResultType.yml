@@ -1,0 +1,154 @@
+MainlyCode\Reeleezee\ValueObject\ImportResultType:
+    properties:
+        processedDateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: ProcessedDateTime
+            accessor:
+                getter: getProcessedDateTime
+                setter: setProcessedDateTime
+            xml_attribute: true
+            type: Goetas\Xsd\XsdToPhp\XMLSchema\DateTime
+        succeeded:
+            expose: true
+            access_type: public_method
+            serialized_name: Succeeded
+            accessor:
+                getter: getSucceeded
+                setter: setSucceeded
+            xml_attribute: true
+            type: boolean
+        exportInfo:
+            expose: true
+            access_type: public_method
+            serialized_name: ExportInfo
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getExportInfo
+                setter: setExportInfo
+            type: MainlyCode\Reeleezee\ValueObject\ExportInfoType
+        maxMessage:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxMessage
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getMaxMessage
+                setter: setMaxMessage
+            type: MainlyCode\Reeleezee\ValueObject\ImportResultType\MaxMessageAType
+        messageList:
+            expose: true
+            access_type: public_method
+            serialized_name: MessageList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getMessageList
+                setter: setMessageList
+            type: array<MainlyCode\Reeleezee\ValueObject\MessageListType\MessageAType>
+            xml_list:
+                inline: false
+                entry_name: Message
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+        person:
+            expose: true
+            access_type: public_method
+            serialized_name: Person
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getPerson
+                setter: setPerson
+            type: MainlyCode\Reeleezee\ValueObject\ImportResultType\PersonAType
+        customer:
+            expose: true
+            access_type: public_method
+            serialized_name: Customer
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getCustomer
+                setter: setCustomer
+            type: MainlyCode\Reeleezee\ValueObject\ImportResultType\CustomerAType
+        vendor:
+            expose: true
+            access_type: public_method
+            serialized_name: Vendor
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getVendor
+                setter: setVendor
+            type: MainlyCode\Reeleezee\ValueObject\ImportResultType\VendorAType
+        employee:
+            expose: true
+            access_type: public_method
+            serialized_name: Employee
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getEmployee
+                setter: setEmployee
+            type: MainlyCode\Reeleezee\ValueObject\ImportResultType\EmployeeAType
+        salesInvoice:
+            expose: true
+            access_type: public_method
+            serialized_name: SalesInvoice
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getSalesInvoice
+                setter: setSalesInvoice
+            type: MainlyCode\Reeleezee\ValueObject\ImportResultType\SalesInvoiceAType
+        purchaseInvoice:
+            expose: true
+            access_type: public_method
+            serialized_name: PurchaseInvoice
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getPurchaseInvoice
+                setter: setPurchaseInvoice
+            type: MainlyCode\Reeleezee\ValueObject\ImportResultType\PurchaseInvoiceAType
+        manualJournal:
+            expose: true
+            access_type: public_method
+            serialized_name: ManualJournal
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getManualJournal
+                setter: setManualJournal
+            type: MainlyCode\Reeleezee\ValueObject\ImportResultType\ManualJournalAType
+        product:
+            expose: true
+            access_type: public_method
+            serialized_name: Product
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getProduct
+                setter: setProduct
+            type: MainlyCode\Reeleezee\ValueObject\ImportResultType\ProductAType
+        account:
+            expose: true
+            access_type: public_method
+            serialized_name: Account
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getAccount
+                setter: setAccount
+            type: MainlyCode\Reeleezee\ValueObject\ImportResultType\AccountAType
+        dossierFile:
+            expose: true
+            access_type: public_method
+            serialized_name: DossierFile
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getDossierFile
+                setter: setDossierFile
+            type: MainlyCode\Reeleezee\ValueObject\ImportResultType\DossierFileAType

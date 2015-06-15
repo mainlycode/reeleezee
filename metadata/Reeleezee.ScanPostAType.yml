@@ -1,0 +1,26 @@
+MainlyCode\Reeleezee\ValueObject\Reeleezee\ScanPostAType:
+    properties:
+        exportInfo:
+            expose: true
+            access_type: public_method
+            serialized_name: ExportInfo
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getExportInfo
+                setter: setExportInfo
+            type: MainlyCode\Reeleezee\ValueObject\ExportInfoType
+        purchaseInvoiceList:
+            expose: true
+            access_type: public_method
+            serialized_name: PurchaseInvoiceList
+            xml_element:
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'
+            accessor:
+                getter: getPurchaseInvoiceList
+                setter: setPurchaseInvoiceList
+            type: array<MainlyCode\Reeleezee\ValueObject\SPPurchaseInvoiceType>
+            xml_list:
+                inline: false
+                entry_name: PurchaseInvoice
+                namespace: 'https://portal.reeleezee.nl/taxonomy/1.27'

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--  Intellectual Property Reeleezee B.V.  -->
+<!--  Version Reeleezee ManualJournal Version 1.27  -->
+<!--  Released by Reeleezee B.V. www.reeleezee.nl  -->
+
+<xs:schema 
+	id="ReeleezeeManualJournal"
+	version="1.27"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns="https://portal.reeleezee.nl/taxonomy/1.27"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:rse="https://portal.reeleezee.nl/taxonomy/1.27/schemaExtentions"
+	xsi:schemaLocation="https://portal.reeleezee.nl/taxonomy/1.27/schemaExtentions SchemaExtentions.xsd" 
+	elementFormDefault="qualified">
+	
+	<xs:include schemaLocation="RlzBaseStructures.xsd" />
+	<xs:include schemaLocation="RlzBaseTypes.xsd" />
+	<xs:include schemaLocation="RlzBaseEnums.xsd" />
+
+	<!-- definition of complex elements -->
+	
+	<xs:complexType name="ManualJournalListType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="ManualJournal" type="ManualJournalType">
+				<xs:annotation>
+					<xs:documentation>Memoriaal</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+
+	<xs:complexType name="ManualJournalType">
+		<xs:sequence>
+			<xs:element name="Reference" minOccurs="0" nillable="true" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Referentie</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="20" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="JournalEntryDiaryCode" type="JournalEntryDiaryCodeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Memoriaalboek code</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		
+			<xs:choice>
+				<xs:group ref="NillableCustomerReferenceGroup" minOccurs="0" />
+				<xs:group ref="NillableVendorReferenceGroup" minOccurs="0" />
+				<xs:group ref="NillableEmployeeReferenceGroup" minOccurs="0" />
+			
+				<xs:element name="CustomerID" type="xs:positiveInteger" minOccurs="0" nillable="true">
+					<xs:annotation>
+						<xs:documentation>Debiteurnummer (VERVALLEN, GEBRUIK CustomerReference)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			
+				<xs:element name="VendorID" type="xs:positiveInteger" minOccurs="0" nillable="true">
+					<xs:annotation>
+						<xs:documentation>Crediteurnummer (VERVALLEN, GEBRUIK VendorReference)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+					
+				<xs:element name="EmployeeCode" type="EmployeeCodeType" minOccurs="0" nillable="true">
+					<xs:annotation>
+						<xs:documentation>Medewerkercode (VERVALLEN, GEBRUIK EmployeeReference)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			
+			<xs:element name="Description" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Omschrijving</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="NonEmptyMultilineStringType">
+						<xs:maxLength value="200" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		
+			<xs:element name="DocumentDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Document datum</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="BookDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Boek datum</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="Status" type="ManualJournalStatusType" minOccurs="0" default="tentative">
+				<xs:annotation>
+					<xs:documentation>Status</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="LineList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence minOccurs="1" maxOccurs="unbounded">
+						<xs:element name="Line" type="ManualJournalLineType">
+							<xs:annotation>
+								<xs:documentation>Memoriaalregel</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		
+		<xs:attribute name="Reference" use="optional" rse:CanAutoTrim="true">
+			<xs:annotation>
+				<xs:documentation>Referentie -> herkenning van bestaande / nieuwe memoriaal</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="TrimmedNonEmptyStringType">
+					<xs:maxLength value="20" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		
+		<xs:attribute name="InternalRlzID" type="ReeleezeeIdType" use="optional">
+			<xs:annotation>
+				<xs:documentation>DO NOT USE !</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	
+	<xs:complexType name="ManualJournalLineType">
+		<xs:sequence>
+			<xs:element name="Reference" minOccurs="0" nillable="true" rse:CanAutoTrim="true">
+				<xs:annotation>
+					<xs:documentation>Referentie</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TrimmedNonEmptyStringType">
+						<xs:maxLength value="20" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Description" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Omschrijving</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="NonEmptyMultilineStringType">
+						<xs:maxLength value="200" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="Amount" type="PriceType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Bedrag (+ Debet, - Credit)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:choice>
+				<xs:sequence>
+					<xs:group ref="AccountReferenceGroup" minOccurs="1" />
+					<xs:group ref="NillableProductReferenceGroup" minOccurs="0" />
+					<xs:group ref="NillableEmployeeReferenceGroup" minOccurs="0" />
+					<xs:group ref="NillableDepartmentReferenceGroup" minOccurs="0" />
+					<xs:group ref="NillableProjectReferenceGroup" minOccurs="0" />
+				</xs:sequence>
+				
+				<xs:sequence>
+					<xs:element name="AccountNumber" type="AccountNumberType" minOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Grootboekrekening (VERVALLEN, GEBRUIK AccountReference)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element name="ProductCode" type="ProductCodeType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Productcode (VERVALLEN, GEBRUIK ProductReference)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element name="EmployeeCode" type="EmployeeCodeType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Medewerkercode (VERVALLEN, GEBRUIK EmployeeReference)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element name="DepartmentCode" type="DepartmentCodeType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Afdelingscode (VERVALLEN, GEBRUIK DepartmentReference)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element name="Project" minOccurs="0" rse:CanAutoTrim="true">
+						<xs:annotation>
+							<xs:documentation>Project (VERVALLEN, GEBRUIK ProjectReference)</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="TrimmedNonEmptyStringType">
+								<xs:maxLength value="50" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+				
+			</xs:choice>
+
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
