@@ -148,7 +148,7 @@ MainlyCode\Reeleezee\ValueObject\SalesInvoiceType:
             accessor:
                 getter: getPaymentMethodReference
                 setter: setPaymentMethodReference
-            type: MainlyCode\Reeleezee\ValueObject\SalesInvoiceType\PaymentMethodReferenceAType
+            type: MainlyCode\Reeleezee\ValueObject\CustomerType\PaymentMethodReferenceAType
         header:
             expose: true
             access_type: public_method

@@ -1,4 +1,4 @@
-MainlyCode\Reeleezee\ValueObject\SalesInvoiceType\PaymentMethodReferenceAType:
+MainlyCode\Reeleezee\ValueObject\CustomerType\PaymentMethodReferenceAType:
     properties:
         type:
             expose: true
